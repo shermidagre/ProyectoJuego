@@ -1,0 +1,90 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-align: center;
+
+    background-color: #0a0a14;
+
+    color: #c8aa6e;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+header {
+
+    background-color: #333;
+
+    color: white;
+
+    padding: 10px;
+
+    position: relative;
+
+}
+
+
+
+
+.container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    padding: 20px;
+
+}
+
+
+.card {
+
+    background: linear-gradient(180deg, #1e2328, #111);
+
+    padding: 30px;
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    width: 190px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    border: 1px solid #c8aa6e;
+
+    text-align: center;
+
+}
+
+
+.pie {
+
+    background-color: black;
+
+    color: #fff;
+
+    padding: 20px;
+
+    text-align: center;
+
+    width: 100%;
+
+    margin-top: 320px;
+
+}
+
+
+.pie a {
+
+    color: orange;
+
+}

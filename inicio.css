@@ -1,0 +1,169 @@
+/* Body */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    height: 100vh;
+
+    display: flex;
+
+}
+
+
+.cont1 {
+
+    display: flex;
+
+    width: 100%;
+
+}
+
+
+
+/* Image */
+
+.formacont1 {
+
+    flex: 0.5;
+
+    background-color: white;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.contimagen {
+
+    flex: 1.5;
+
+    position: relative; /* Para posicionar la imagen */
+
+}
+
+
+.contimagen img {
+
+    position: absolute; /* Permite que la imagen cubra todo el contenedor */
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%; /* Asegura que la imagen cubra todo el ancho */
+
+    height: 100%; /* Asegura que la imagen cubra toda la altura */
+
+}
+
+
+/* Username Password */
+
+
+
+label {
+
+    margin: 10px 0 5px;
+
+}
+
+
+input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+}
+
+
+button {
+
+    padding: 10px;
+
+    background-color: #007BFF;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+
+button:hover {
+
+    background-color: #0056b3;
+
+}
+
+
+.iniciarsesion {
+
+    margin-bottom: 15px;
+
+    border: 2px solid #ccc;
+
+    border-radius: 5px;
+
+    padding: 30px;
+
+    font-family: "Jacquard 12", serif;
+
+    font-weight: 1500;
+
+    font-size: 30px;
+
+}
+
+
+/* Crear cuenta */
+
+.crearcuenta {
+
+    margin-top: 70px;
+
+    text-align: center;
+
+    font-family: "Jacquard 12", serif;
+
+    font-weight: 1500;
+
+    font-size: 30px;
+
+}
+
+
+a {
+
+    color: #0056b3
+}
