@@ -105,8 +105,8 @@ Si deseas contribuir al proyecto, ¡eres bienvenido! Puedes realizar mejoras en 
 
 ## Autor
 
-- **Nombre**: [Shermidagre]
-- **Contacto**: [samuelhermida55@gmail.com]
+-  Samuel Hermida gregores
+- **Contacto**: samuelhermida55@gmail.com
 
 ---
 
