@@ -1,0 +1,156 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-align: center;
+
+    background-color: #0a0a14;
+
+    color: #c8aa6e;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+header {
+
+    background-color: #333;
+
+    color: white;
+
+    padding: 10px;
+
+    position: relative;
+
+}
+
+
+
+
+.container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    padding: 20px;
+
+}
+
+
+.card {
+
+    background: linear-gradient(180deg, #1e2328, #111);
+
+    padding: 30px;
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    width: 190px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    border: 1px solid #c8aa6e;
+
+    text-align: center;
+
+}
+
+
+.pie {
+
+    background-color: black;
+
+    color: #fff;
+
+    padding: 20px;
+
+    text-align: center;
+
+    width: 100%;
+
+    margin-top: 320px;
+
+}
+
+
+.pie a {
+
+    color: orange;
+
+}
+
+
+/* Botones */
+
+.BotonDados{
+background-color: rgb(250, 232, 255);
+position: relative;
+overflow: hidden;
+border-radius: 30px;
+border: 1px solid #e9bebe; /* Borde rojo */
+/* Cambia el color del borde */
+box-shadow: 0 0 10px rgba(210, 63, 255, 0.5); /* Sombra roja */
+padding: 5px 20px;
+
+}
+
+.BotonDados:hover {
+    background-color: #ffa3fa; /* Cambia el color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color del texto al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+
+.Dadosmensaje {
+
+    font-size: 16px; /* Tamaño de fuente */
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin-top: 60px; /* Espacio superior */
+}
+
+
+.Titulo {
+    font-size: 20px; /* Tamaño de fuente */
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff; /* Color del texto */
+    margin-bottom: 50px; /* Espacio inferior */
+    text-align: center; /* Centrar el texto */
+}
+
+.BotonExcusa{
+
+background-color: rgb(250, 232, 255);
+position: relative;
+overflow: hidden;
+border-radius: 30px;
+padding: 5px 20px;
+
+}
+.BotonExcusa:hover {
+    background-color: #ffa3fa; /* Cambia el color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color del texto al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0,7s ease, color 0.3s ease; /* Transición suave */
+}
+
+.ExcusaMensaje {
+
+    font-size: 16px; /* Tamaño de fuente */
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin-top: 50px; /* Espacio superior */
+}

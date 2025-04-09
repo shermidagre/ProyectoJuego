@@ -1,0 +1,20 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de lanza dados</title>
+  <link rel="stylesheet" href="dados.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Lanza pussy</h1>
+    <p>Selecciona cuántos dados quieres lanzar (máximo 6):</p>
+    <div class="grupo-entrada">
+      <input type="number" id="cantidad-dados" min="1" max="6" placeholder="Ej: 3" class="entrada">
+      <button id="boton-lanzar" class="boton">Lanzar</button>
+    </div>
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script src="dados.js"></script>
+</body>
+</html>

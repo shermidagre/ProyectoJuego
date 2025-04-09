@@ -1,0 +1,113 @@
+        /* Estilo general */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive; /* Fuente retro pixelada */
+            background-color: #000; /* Fondo negro */
+            color: #ff0; /* Texto amarillo brillante */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fondo pixelado estilo arcade */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFElEQVQIW2P8z8AARIQB46hC/A8A5pQJgKgB7XsAAAAASUVORK5CYII=') repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Efecto CRT para el contenedor principal */
+        .container {
+            position: relative;
+            padding: 20px;
+            border: 2px solid #0f0; /* Borde verde neon */
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+            animation: flicker 0.5s infinite alternate;
+            text-align: center;
+        }
+
+        /* Animación de parpadeo CRT */
+        @keyframes flicker {
+            0% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+              /* Div para la imagen */
+              #imagen-container {
+                margin: 20px 0;
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+                overflow: hidden;
+                border: 2px solid #0f0;
+                box-shadow: 0 0 10px #0f0;
+            }
+    
+            #imagen-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        /* Estilo del texto */
+        #excusa {
+            font-size: 30px;
+            margin-bottom: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Estilo del botón */
+        #generarBtn {
+            margin-top: 100px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            color: #0f0;
+            background-color: #000;
+            border: 2px solid #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #generarBtn:hover {
+            background-color: #0f0;
+            color: #000;
+        }
+
+        /* Efecto de rayas CRT */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 1px,
+                rgba(0, 255, 0, 0.05) 1px,
+                rgba(0, 255, 0, 0.05) 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }

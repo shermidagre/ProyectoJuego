@@ -1,169 +1,167 @@
-/* Body */
-
-* {
-
-    box-sizing: border-box;
-
-    margin: 0;
-
-    padding: 0;
-
-}
-
-
+/* Estilos base */
 body {
-
-    font-family: Arial, sans-serif;
-
-    height: 100vh;
-
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    margin: 0;
+    padding: 0;
     display: flex;
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-
-.cont1 {
-
-    display: flex;
-
+.con1 {
     width: 100%;
-
+    max-width: 600px;
+    padding: 20px;
+    background-color: #1e1e1e; /* Fondo oscuro */
+    border: 2px solid #ff0000; /* Borde rojo retro */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Sombra roja */
+    
 }
-
-
-
-/* Image */
 
 .formacont1 {
-
-    flex: 0.5;
-
-    background-color: white;
-
-    padding: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
+    text-align: center;
 }
 
-
-.contimagen {
-
-    flex: 1.5;
-
-    position: relative; /* Para posicionar la imagen */
-
+h1 {
+    font-size: 24px;
+    color: #ff0000; /* Título rojo */
+    text-shadow: 0 0 5px #ff0000; /* Brillo rojo */
 }
 
-
-.contimagen img {
-
-    position: absolute; /* Permite que la imagen cubra todo el contenedor */
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%; /* Asegura que la imagen cubra todo el ancho */
-
-    height: 100%; /* Asegura que la imagen cubra toda la altura */
-
+.cont2 {
+    margin-bottom: 15px;
 }
-
-
-/* Username Password */
-
-
 
 label {
-
-    margin: 10px 0 5px;
-
-}
-
-
-input {
-
-    width: 100%;
-
-    padding: 10px;
-
+    display: block;
     margin-bottom: 15px;
+    color: #fff;
+}
 
-    border: 1px solid #ccc;
+input[type="text"],
 
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff0000;
     border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+.pie {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .con1 {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+/* Animación de parpadeo para el título */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+h1 {
+    animation: blink 1.5s infinite; /* Parpadeo continuo */
+}
+
+/* Estilo para cuando no tienes cuenta*/
+
+.NoCuenta {
+    margin-top: 100px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ff0000; /* Borde rojo retro */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Sombra roja */
+    animation: blink 1.5s infinite; /* Parpadeo continuo */
+    transition: background-color 0.3s ease; /* Transición suave */
+    border: solid 2px #ff0000; /* Borde rojo retro */
 
 }
 
+/* Efecto de desplazamiento en el botón */
 
 button {
+    position: relative;
+    overflow: hidden;
+}
 
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 10px;
-
-    background-color: #007BFF;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 5px;
-
-    cursor: pointer;
-
+    font-size: 18px;
+    background-color: rgba(255, 0, 0, 0.5); /* Rojo semitransparente */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
 }
 
-
-button:hover {
-
-    background-color: #0056b3;
-
+button:hover::after {
+    transform: translateX(0);
 }
 
-
-.iniciarsesion {
-
-    margin-bottom: 15px;
-
-    border: 2px solid #ccc;
-
-    border-radius: 5px;
-
-    padding: 30px;
-
-    font-family: "Jacquard 12", serif;
-
-    font-weight: 1500;
-
-    font-size: 30px;
-
-}
-
-
-/* Crear cuenta */
-
-.crearcuenta {
-
-    margin-top: 70px;
-
+/* Estilos para mensajes de error */
+#error-message {
+    color: red;
+    font-weight: bold;
     text-align: center;
-
-    font-family: "Jacquard 12", serif;
-
-    font-weight: 1500;
-
-    font-size: 30px;
-
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Animación de aparición */
 }
 
+#error-message.show {
+    opacity: 1;
+}
 
-a {
+/* Estilos para mensajes de éxito */
+#success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Animación de aparición */
+}
 
-    color: #0056b3
+#success-message.show {
+    opacity: 1;
 }

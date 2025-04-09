@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CrearCuenta.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <title>Crear cuenta</title>
+</head>
+<body>
+<div class="con">
+    <form class="cont1" id="registro">
+        <fieldset>
+            <h1> Crea tu cuenta ahora !</h1>
+            <div class="cont2">
+                <label for="nuevoUsuario">Nombre de usuario</label>
+                <input type="text" id="nuevoUsuario" name="nombre" required />
+            </div>
+            <div class="cont2">
+                <label for="nuevaContraseña">Contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="nuevaContraseña" name="Contraseña" required />
+                    <span id="toggle-password-crear" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" aria-label="Mostrar/ocultar contraseña">👁️</span>
+                </div>
+            </div>
+            <div class="cont2">
+                <label for="confirmarContraseña">Confirmar contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="confirmarContraseña" name="confirmarContraseña" required />
+                    <span id="toggle-confirm-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" aria-label="Mostrar/ocultar confirmación de contraseña">👁️</span>
+                </div>
+            </div>
+            <div id="password-strength">
+                <div class="bar"></div>
+            </div>
+            <input class="btn" type="submit" value="Crear ahora" />
+            <p id="error-message" style="color: red; margin-top: 10px;"></p>
+            <p id="success-message" style="color: green; margin-top: 10px;"></p>
+        </fieldset>
+    </form>
+</div>
+<div class="Condiciones">
+    <p>Al crear una cuenta, aceptas nuestras <a href="#">Condiciones de uso</a> y <a href="#">Política de privacidad</a>.</p>
+
+</div>
+<div class="pie">
+    <p>¿Ya tienes una cuenta?</p>
+    <a href="inicio.html">Volver a la página anterior</a>
+</div>
+<script src="inicio.js"></script> <!-- Referencia al archivo inicio.js -->
+</body>
+</html>

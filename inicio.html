@@ -1,53 +1,53 @@
+
+<!-- Este es el archivo HTML para la página de inicio de sesión. -->
+<!-- Se ha añadido un enlace para crear una cuenta y un enlace para recuperar la contraseña. -->
+<!-- Se ha añadido un script para manejar la lógica de inicio de sesión. -->
+<!-- Se ha añadido un script para manejar la lógica de mostrar/ocultar la contraseña. -->
+<!-- Se ha añadido un script para manejar la lógica de validación de la contraseña. -->
+<!-- Inicia sesion con nombre Samu contrasñea Contra00-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="inicio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <title>Iniciar Sesión</title>
 </head>
-
-
-
 <body>
-
-    <div class="con1">
-
-        <div class="formacont1">
-
-            <form id="inicio">
-
-                <div class="iniciarsesion">
-                    <h2 style="text-align: center; margin-bottom: 20px;">Iniciar Sesión</h2>
-                    <label for="Usuario">Usuario:</label>
-                    <input type="text" id="Usuario" name="Usuario" style="margin-bottom: 40px;" required>
-                    <label for="Contraseña">Contraseña:</label>
-                    <input type="password" id="Contraseña" name="Contraseña" required>
-                    <button href="../Seleccionapartados/inicio.html" type="submit" >Entrar</button>
+<div class="con1">
+    <div class="formacont1">
+        <form id="inicio">
+            <h1 style="text-align: center; margin-bottom: 20px;">Iniciar Sesión</h1>
+            <div class="cont2">
+                <label for="Usuario">Nombre de usuario</label>
+                <input type="text" id="Usuario" name="Usuario" required />
+            </div>
+            <div class="cont2">
+                <label for="Contraseña">Contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="Contraseña" name="Contraseña" required />
+                    <span id="toggle-password-inicio" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" aria-label="Mostrar/ocultar contraseña">👁️</span>
                 </div>
-
-                <div class="crearcuenta">
-                    <a href="../ProyectoJuego/Creacion de cuenta/CrearCuenta.html">Crear cuenta</a>
-                    <img style="margin-top: 100px;" src="" alt="Imagen de fondo">
-                </div>
-
-            </form>
-
-        </div>
-
-        <div class="contimagen">
-            <img src="Inicio imagenes/Bienvenido.avif" alt="Imagen de fondo">
-        </div>
-
+            </div>
+            <button type="submit">Entrar</button>
+            <p id="error-message" style="color: red; margin-top: 10px;"></p>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="#" id="forgot-password">¿Olvidaste tu contraseña?</a>
+            </p>
+        </form>
+    </div>
+</div>
+<div class="pie">
+    
+    <div class="Nocuenta">
+        <p>¿No tienes cuenta? Creala aqui debajo</p>
+   
+        <a href="CrearCuenta.html">Crear cuenta</a>
     </div>
 
-    <script src="inicio.js"></script> <!-- Incluir el archivo JavaScript externo -->
-
+</div>
+<script src="inicio.js"></script> <!-- Referencia al archivo inicio.js -->
 </body>
 </html>
