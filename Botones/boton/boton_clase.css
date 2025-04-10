@@ -1,0 +1,23 @@
+
+.container {
+    text-align: center;
+    }
+h1 {
+    color: #7d057f;
+    margin-bottom: 30px;
+}
+
+.image-button {
+    cursor: pointer;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+   
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.image-button:hover {
+    transform: scale(1.5);
+   
+}
+

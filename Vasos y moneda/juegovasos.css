@@ -1,0 +1,127 @@
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-align: center;
+
+    background-color: #0a0a14;
+
+    color: #c8aa6e;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+.container2{
+    background-color: rgb(119, 184, 235);
+    padding: 100px;
+    
+} 
+.container2{
+    display: flex;
+    justify-content: center;
+}
+
+.container3{
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    padding: 20px;
+}
+.BotonReset{
+    margin-top: 150px;
+    background-color: rgb(250, 232, 255);
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    border: 1px solid #e9bebe; /* Borde rojo */
+    box-shadow: 0 0 10px rgba(210, 63, 255, 0.5); /* Sombra roja */
+    padding: 15px 30px;
+
+}
+
+.vaso1{
+    background: linear-gradient(180deg, #1e2328, #111);
+
+       padding-left: 100px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 300px;
+
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    width: 190px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    border: 1px solid #c8aa6e;
+
+    text-align: center;
+
+    background-image: url(vaso.jpg);
+}
+
+.vaso2{
+    background: linear-gradient(180deg, #1e2328, #111);
+
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 300px;
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    width: 190px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    border: 1px solid #c8aa6e;
+
+    text-align: center;
+
+    background-image: url(vaso.jpg);
+}
+.vaso2:active{
+    
+    background-image: url(moneda.png);
+
+}
+.vaso3{
+
+    background: linear-gradient(180deg, #1e2328, #111);
+
+    padding-left: 70px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 300px;
+
+
+    margin: 10px;
+
+    border-radius: 15px;
+
+    width: 190px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    border: 1px solid #c8aa6e;
+
+    text-align: center;
+
+    background-image: url(vaso.jpg);
+}
+.Contador{
+margin-top: 50px;
+}
