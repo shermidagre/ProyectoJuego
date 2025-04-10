@@ -11,6 +11,7 @@ const apellidos = [
     'Umbrella', 'Vela', 'Waffle', 'Xenón', 'Yunque', 'Zafiro'
 ];
 
+
 function cogerprimeraletra (palabra){ // Esta funcion sirve para coger la primera letra de una palabra
 
     return palabra.charAt(0).toUpperCase(); // Convertimos a mayúscula para evitar problemas de comparación
