@@ -34,19 +34,11 @@
             border: 2px solid #0f0; /* Borde verde neon */
             background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
-            animation: flicker 0.5s infinite alternate;
             text-align: center;
+            
         }
 
-        /* Animación de parpadeo CRT */
-        @keyframes flicker {
-            0% {
-                opacity: 0.9;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
+
 
               /* Div para la imagen */
               #imagen-container {
@@ -93,6 +85,10 @@
             color: #000;
         }
 
+        #generarBtn:active {
+            
+        }
+
         /* Efecto de rayas CRT */
         body::after {
             content: '';
@@ -106,7 +102,7 @@
                 transparent,
                 transparent 1px,
                 rgba(0, 255, 0, 0.05) 1px,
-                rgba(0, 255, 0, 0.05) 2px
+                rgba(111, 224, 111, 0.05) 2px
             );
             pointer-events: none;
             z-index: 1;
