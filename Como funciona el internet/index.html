@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cómo Funciona Internet?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Portada -->
+  <header id="home">
+    <h1>¿Cómo Funciona Internet?</h1>
+    <p>Explora paso a paso el funcionamiento de esta red global.</p>
+  </header>
+
+  <!-- Sección 1: Red Interna vs. Externa -->
+  <section id="red-interna" class="section">
+    <h2>Red Interna vs. Externa</h2>
+    <div class="diagram">
+      <div class="device" data-info="Dispositivos: Envían solicitudes a la red.">💻</div>
+      <div class="device" data-info="Router: Conecta la red interna con internet.">📡</div>
+      <div class="device" data-info="Servidor: Almacena páginas web.">🌐</div>
+    </div>
+    <p id="infoPanel"></p>
+  </section>
+
+  <!-- Sección 2: DNS e IPs -->
+
+  <section id="dns" class="section">
+    <h2>¿Qué son las direcciones IP y el DNS?</h2>
+    <input type="text" id="urlInput" placeholder="Escribe una URL (ejemplo: google.com)">
+    <button id="dnsButton">Consultar DNS</button>
+    <button id="infoButton">ℹ️ Más información</button>
+    <p id="result"></p>
+    <div id="infoBox" style="display: none;">
+      <p>Aquí tienes algunas IPs de ejemplo:</p>
+      <ul>
+        <li><strong>google.com:</strong> 172.217.16.68</li>
+        <li><strong>facebook.com:</strong> 157.240.20.15</li>
+        <li><strong>localhost:</strong> 127.0.0.1 (Loopback)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sección 3: Viaje de los Datos -->
+  <section id="viaje-datos" class="section">
+    <h2>El Viaje de los Datos</h2>
+    <p id="simulationText">Consulta DNS...</p>
+    <button id="nextButton">Siguiente</button>
+  </section>
+
+  <!-- Sección 4: Juego de Roles -->
+  <section id="juego-paquetes" class="section">
+    <h2>Juega y Aprende: Envía un Paquete</h2>
+    <div id="gameArea">
+      <div id="packet" draggable="true">📦</div>
+      <div id="server"> Servidor 🌐</div>
+    </div>
+  </section>
+
+
+  <!-- Barra de Progreso -->
+<div id="progressBar">
+  <div id="progressFill"></div>
+  <div id="progressIcons">
+    <span id="icon-redInterna">💻</span>
+    <span id="icon-dns">🌐</span>
+    <span id="icon-viajeDatos">🚀</span>
+    <span id="icon-juegoPaquetes">📦</span>
+  </div>
+  <div id="progressMessage">0% Completado</div>
+</div>
+
+  <!-- Sección 5: Conclusión -->
+  <footer id="conclusion" class="section">
+    <p>Ahora entiendes cómo funciona internet. ¿Quieres explorar más?</p>
+    <button onclick="window.location.href='#home'">Volver al inicio</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
