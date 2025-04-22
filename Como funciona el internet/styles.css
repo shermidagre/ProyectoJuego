@@ -1,0 +1,154 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace; /* Fuente retro pixelada */
+  background-color: #0a0a0a; /* Negro oscuro */
+  color: #00ff00; /* Verde neon */
+  line-height: 1.6;
+  text-align: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00; /* Brillo retro */
+}
+
+.section {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background: #1a1a1a; /* Gris oscuro */
+  border: 2px solid #00ff00; /* Borde verde neon */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 255, 0, 0.2); /* Sombra ligera */
+}
+
+button {
+  background-color: #00ff00;
+  color: #0a0a0a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ff00; /* Efecto glow al pasar el mouse */
+}
+
+input[type="text"] {
+  background-color: #1a1a1a;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', monospace;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.diagram {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.device {
+  font-size: 48px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.device:hover {
+  transform: scale(1.2);
+  color: #ff0000; /* Rojo retro */
+}
+
+#gameArea {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#packet {
+  font-size: 48px;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+#packet:hover {
+  transform: scale(1.1);
+}
+
+#infoBox {
+  margin-top: 10px;
+  padding: 10px;
+  background: #1a1a1a;
+  border: 2px solid #00ff00;
+  border-radius: 5px;
+  color: #00ff00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+}
+
+/* Barra de progreso */
+
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #1a1a1a;
+  border-bottom: 2px solid #00ff00;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+#progressFill {
+  height: 100%;
+  background: #00ff00;
+  transition: width 0.5s;
+}
+
+#progressIcons {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+#progressIcons span {
+  font-size: 20px;
+  color: #888;
+  transition: color 0.3s;
+}
+
+#progressIcons span.completed {
+  color: #00ff00;
+}
+
+#progressMessage {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: #00ff00;
+  margin-right: 20px;
+}
+
+/* Ocultar la sección de conclusión inicialmente */
+#conclusion {
+  display: none;
+}
