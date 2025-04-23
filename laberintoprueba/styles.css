@@ -1,0 +1,72 @@
+/* Estilos CSS */
+body {
+    font-family: "Press Start 2P", cursive;
+    background-color: black;
+    color: #00ff00;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    padding: 20px;
+    background-color: #000080;
+    color: #ffff00;
+  }
+  
+  #laberinto {
+    display: grid;
+    grid-template-columns: repeat(10, 40px); /* 10 columnas */
+    gap: 2px; /* Espacio entre celdas */
+    justify-content: center;
+    margin: 20px auto;
+  }
+  
+  .celda {
+    width: 40px;
+    height: 40px;
+    background-color: #00ff00;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pared {
+    background-color: black;
+  }
+  
+  .celda.peligro {
+    background-color: #ff4500;
+    opacity: 0.7;
+    animation: interferencia 0.5s infinite;
+  }
+  
+  @keyframes interferencia {
+    0% { background-color: #ff4500; }
+    50% { background-color: transparent; }
+    100% { background-color: #ff4500; }
+  }
+  
+  #mensaje {
+    font-size: 16px;
+    color: red;
+    text-align: center;
+    animation: parpadeo 1s infinite;
+  }
+  
+  @keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  footer {
+    padding: 10px;
+    background-color: #000080;
+    color: #ffff00;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

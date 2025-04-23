@@ -1,0 +1,39 @@
+.todo{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 700px;
+    background-color: grey;
+}
+
+.vasos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    border: solid 2px black;
+}
+
+button{
+    height: 100px;
+    width: 200px;
+}
+
