@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Barra de progreso 
   */
   let progress = 0;
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressMessage').textContent = '0% Completado';
 
   function updateProgress(taskName) {
     // Incrementar progreso según la tarea completada
@@ -159,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     successMessage.style.fontSize = '16px';
     successMessage.style.boxShadow = '0 0 10px #00ff00';
     successMessage.style.zIndex = '1000';
-    successMessage.style.margin = '100px';
     document.body.appendChild(successMessage);
 
     // Ocultar el mensaje después de 5 segundos

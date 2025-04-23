@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
   text-align: center;
   padding: 20px;
+  margin-top: 70px;
 }
 
 h1, h2 {
@@ -110,7 +111,7 @@ input[type="text"] {
   left: 0;
   width: 100%;
   height: 40px;
-  background: #1a1a1a;
+  background: #000000;
   border-bottom: 2px solid #00ff00;
   display: flex;
   align-items: center;
@@ -122,23 +123,26 @@ input[type="text"] {
   height: 100%;
   background: #00ff00;
   transition: width 0.5s;
+  width: 100%;
+
 }
 
 #progressIcons {
   display: flex;
   gap: 20px;
-  margin-left: auto;
-  margin-right: 20px;
+  margin-left: 350px;
 }
 
 #progressIcons span {
   font-size: 20px;
   color: #888;
   transition: color 0.3s;
+  margin-left: 200px;
 }
 
 #progressIcons span.completed {
-  color: #00ff00;
+  color: #000000;
+  
 }
 
 #progressMessage {
@@ -146,9 +150,11 @@ input[type="text"] {
   font-size: 14px;
   color: #00ff00;
   margin-right: 20px;
+  margin-top: 20px;
 }
 
 /* Ocultar la sección de conclusión inicialmente */
 #conclusion {
   display: none;
 }
+
