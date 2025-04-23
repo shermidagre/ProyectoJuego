@@ -8,7 +8,7 @@ public class Model {
 
     /**
      * Crea un coche y lo mete en el parking
-     * @param modelo del coche
+     * @param modelo del coches
      * @param matricula identificador unico
      * @return el coche creado
      */
