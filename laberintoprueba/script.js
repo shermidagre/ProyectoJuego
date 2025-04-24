@@ -1,9 +1,4 @@
-// Generación automática del laberinto de 10x10
-const filas = 10;
-const columnas = 10;
-const conexiones = {};
-let jugador = "celda1"; // Posición inicial del jugador
-let asesino = "celda100"; // Posición inicial del asesino
+
 
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
