@@ -28,7 +28,8 @@ header {
   grid-template-columns: repeat(5, 40px); /* 10 columnas */
   gap: 4px; /* Espacio entre celdas */
   justify-content: center;
-  margin: 40px auto;
+  margin: 140px auto;
+  
   border: 4px double #00ffff;
   padding: 10px;
   background-color: #001010;
