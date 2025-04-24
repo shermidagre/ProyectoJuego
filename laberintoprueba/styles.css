@@ -7,20 +7,25 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-
   /*fondo GIF */
-  background-image: url('portadaLaberinto.gif');
+  background-image: url('./imágenes/portadaLaberinto.gif');
   background-size: cover;
   background-position: center;
+
 }
 
 header {
   padding: 20px;
   background: linear-gradient(90deg, #000080, #001f3f);
   color: #ffff00;
-  text-shadow: 2px 2px #ff00ff;
+  text-shadow: 2px 2px #00ffff;
   box-shadow: 0 0 10px #00ffff;
   border-bottom: 4px solid #00ffff;
+  /*fondo GIF */
+  background-image: url('./imágenes/fondonombre.jpg');
+  background-size: cover;
+  background-position: center;
+
 }
 
 #laberinto {
@@ -97,4 +102,9 @@ footer {
   text-shadow: 1px 1px #ff00ff;
   box-shadow: 0 -2px 8px #00ffff;
   border-top: 4px solid #00ffff;
+
+  /*fondo GIF */
+  background-image: url('./imágenes/fondonombre.jpg');
+  background-size: cover;
+  background-position: center;
 }
