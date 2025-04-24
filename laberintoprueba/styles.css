@@ -20,7 +20,7 @@ header {
 
 #laberinto {
   display: grid;
-  grid-template-columns: repeat(10, 40px); /* 10 columnas */
+  grid-template-columns: repeat(5, 40px); /* 10 columnas */
   gap: 4px; /* Espacio entre celdas */
   justify-content: center;
   margin: 40px auto;
