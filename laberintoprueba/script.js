@@ -1,5 +1,8 @@
-
-
+const filas = 5;
+ const columnas = 5;
+ const conexiones = {};
+ let jugador = "celda1"; // Posición inicial del jugador
+ let asesino = "celda25"; // Posición inicial del asesino
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
   for (let fila = 0; fila < filas; fila++) {
@@ -17,18 +20,19 @@ function generarLaberinto() {
 
 // Crear el laberinto visual
 function crearLaberinto() {
+  /*
   const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
     celda.id = `celda${i}`;
     celda.classList.add("celda");
-
+  */
     // Colocar al jugador y al asesino
     if (i === 1) celda.textContent = "😊"; // Jugador
     if (i === filas * columnas) celda.textContent = "💀"; // Asesino
 
     laberintoDiv.appendChild(celda);
-  }
+
 }
 
 // Actualizar la zona de peligro
@@ -90,7 +94,7 @@ document.addEventListener("keydown", function (event) {
   moverAsesino();
   actualizarPeligro();
 
-  if (jugador === "celda100") {
+  if (jugador === "celda25") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
   }
 });
