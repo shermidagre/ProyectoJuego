@@ -1,72 +1,94 @@
 /* Estilos CSS */
 body {
-    font-family: "Press Start 2P", cursive;
-    background-color: black;
-    color: #00ff00;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    padding: 20px;
-    background-color: #000080;
-    color: #ffff00;
-  }
-  
-  #laberinto {
-    display: grid;
-    grid-template-columns: repeat(10, 40px); /* 10 columnas */
-    gap: 2px; /* Espacio entre celdas */
-    justify-content: center;
-    margin: 20px auto;
-  }
-  
-  .celda {
-    width: 40px;
-    height: 40px;
-    background-color: #00ff00;
-    border: 2px solid black;
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pared {
-    background-color: black;
-  }
-  
-  .celda.peligro {
-    background-color: #ff4500;
-    opacity: 0.7;
-    animation: interferencia 0.5s infinite;
-  }
-  
-  @keyframes interferencia {
-    0% { background-color: #ff4500; }
-    50% { background-color: transparent; }
-    100% { background-color: #ff4500; }
-  }
-  
-  #mensaje {
-    font-size: 16px;
-    color: red;
-    text-align: center;
-    animation: parpadeo 1s infinite;
-  }
-  
-  @keyframes parpadeo {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  footer {
-    padding: 10px;
-    background-color: #000080;
-    color: #ffff00;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+  font-family: "Press Start 2P", cursive;
+  background-color: black;
+  color: #00ff00;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 20px;
+  background: linear-gradient(90deg, #000080, #001f3f);
+  color: #ffff00;
+  text-shadow: 2px 2px #ff00ff;
+  box-shadow: 0 0 10px #00ffff;
+  border-bottom: 4px solid #00ffff;
+}
+
+#laberinto {
+  display: grid;
+  grid-template-columns: repeat(10, 40px); /* 10 columnas */
+  gap: 4px; /* Espacio entre celdas */
+  justify-content: center;
+  margin: 40px auto;
+  border: 4px double #00ffff;
+  padding: 10px;
+  background-color: #001010;
+  box-shadow: 0 0 15px #00ffff;
+  max-width: fit-content;
+}
+
+.celda {
+  width: 40px;
+  height: 40px;
+  background-color: #00ff00;
+  border: 2px solid black;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  box-shadow: inset 0 0 8px #00ff00;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.celda:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.pared {
+  background-color: black;
+  box-shadow: inset 0 0 10px #0000ff;
+}
+
+.celda.peligro {
+  background-color: #ff4500;
+  opacity: 0.9;
+  animation: interferencia 0.5s infinite;
+  box-shadow: 0 0 8px #ff4500, 0 0 12px #ff0000 inset;
+}
+
+@keyframes interferencia {
+  0% { background-color: #ff4500; }
+  50% { background-color: #550000; }
+  100% { background-color: #ff4500; }
+}
+
+#mensaje {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+  animation: parpadeo 1s infinite;
+  margin-top: 20px;
+  text-shadow: 0 0 5px red;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+footer {
+  padding: 10px;
+  background: linear-gradient(90deg, #000080, #001f3f);
+  color: #ffff00;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-shadow: 1px 1px #ff00ff;
+  box-shadow: 0 -2px 8px #00ffff;
+  border-top: 4px solid #00ffff;
+}
