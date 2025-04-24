@@ -7,6 +7,11 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+
+  /*fondo GIF */
+  background-image: url('portadaLaberinto.gif');
+  background-size: cover;
+  background-position: center;
 }
 
 header {
