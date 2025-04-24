@@ -1,3 +1,4 @@
+
 /* Estilos CSS */
 body {
   font-family: "Press Start 2P", cursive;
@@ -11,8 +12,8 @@ body {
   background-image: url('./imágenes/portadaLaberinto.gif');
   background-size: cover;
   background-position: center;
-
-}
+                           
+}                              
 
 header {
   padding: 20px;
@@ -30,7 +31,7 @@ header {
 
 #laberinto {
   display: grid;
-  grid-template-columns: repeat(5, 40px); /* 10 columnas */
+  grid-template-columns: repeat(8, 40px); /* 10 columnas */
   gap: 4px; /* Espacio entre celdas */
   justify-content: center;
   margin: 140px auto;
@@ -52,6 +53,11 @@ header {
   font-size: 16px;
   box-shadow: inset 0 0 8px #00ff00;
   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/* Añadí color a las celdas sombreadas para dar forma al creeper*/
+#celda36,#celda37,#celda43,#celda46,#celda53,#celda52,#celda59,#celda62{
+  background-color: rgb(41, 66, 35);
+  box-shadow: inset 0 0 8px rgb(59, 62, 60);;
 }
 
 .celda:hover {
