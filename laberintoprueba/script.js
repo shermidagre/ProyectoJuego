@@ -1,5 +1,8 @@
-
-
+const filas = 8;
+ const columnas = 8;
+ const conexiones = {};
+ let jugador = "celda1"; // Posición inicial del jugador
+ let asesino = "celda64"; // Posición inicial del asesino
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
   for (let fila = 0; fila < filas; fila++) {
@@ -17,18 +20,19 @@ function generarLaberinto() {
 
 // Crear el laberinto visual
 function crearLaberinto() {
+  /*
   const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
     celda.id = `celda${i}`;
     celda.classList.add("celda");
-
+  */
     // Colocar al jugador y al asesino
     if (i === 1) celda.textContent = "😊"; // Jugador
     if (i === filas * columnas) celda.textContent = "💀"; // Asesino
 
     laberintoDiv.appendChild(celda);
-  }
+
 }
 
 // Actualizar la zona de peligro
@@ -79,6 +83,12 @@ document.addEventListener("keydown", function (event) {
   let nuevaCeldaID = conexiones[jugador][direccion];
   if (!nuevaCeldaID) return;
 
+  // Verificar si la celda destino es un muro
+  const celdaDestino = document.getElementById(nuevaCeldaID);
+  if (celdaDestino.classList.contains("muro")) {
+  return; // No se puede mover si hay un muro
+  }
+
   document.getElementById(jugador).textContent = "";
   jugador = nuevaCeldaID;
   document.getElementById(jugador).textContent = "😊";
@@ -90,7 +100,7 @@ document.addEventListener("keydown", function (event) {
   moverAsesino();
   actualizarPeligro();
 
-  if (jugador === "celda100") {
+  if (jugador === "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
   }
 });
