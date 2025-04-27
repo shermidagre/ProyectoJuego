@@ -167,7 +167,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   moverAsesino();
   actualizarPeligro();
 
-  if (jugador === "celda64") {
+  if (jugador == "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
   }
 });
