@@ -56,6 +56,10 @@ function vision() {
   document.querySelectorAll(".celda.vision2").forEach(celda => {
     celda.classList.remove("vision2");
   });
+  document.querySelectorAll(".celda.salida").forEach(celda => {
+    celda.classList.remove("salida");
+    document.getElementById('celda64').textContent = "";
+  });
 
   let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
 
@@ -92,6 +96,15 @@ function vision() {
   document.querySelectorAll(".celda.vision.vision2").forEach(celda => {
     celda.classList.remove("vision2");
   });
+
+  if(document.getElementById('celda64').classList.contains("vision")||document.getElementById('celda64').classList.contains("vision2")){
+    document.getElementById('celda64').classList.add("salida");
+    document.getElementById('celda64').textContent = "🏆";
+    document.querySelectorAll(".celda.salida").forEach(celda => {
+      celda.classList.remove("vision");
+      celda.classList.remove("vision2");
+    });
+  }
 }
 
 // Movimiento del asesino
@@ -153,12 +166,6 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   vision();
   moverAsesino();
   actualizarPeligro();
-
-  if (document.getElementById(jugador).classList.contains("peligro")) {
-    alert("¡Cuidado! El asesino está cerca... 💀");
-  }
-
- 
 
   if (jugador === "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
