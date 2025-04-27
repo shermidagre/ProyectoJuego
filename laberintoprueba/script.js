@@ -18,15 +18,6 @@ function generarLaberinto() {
   }
 }
 
-
-function posicionPersonajes() {//colocamos los personajes
-
-    if (i === 1) celda.textContent = "😊"; // Jugador
-    if (i === filas * columnas) celda.textContent = ""; // Asesino
-
-}
-
-
 function actualizarPeligro() {//zona de peligro
   document.querySelectorAll(".celda.peligro").forEach(celda => {
     celda.classList.remove("peligro");
@@ -50,13 +41,16 @@ function actualizarPeligro() {//zona de peligro
       conexiones[asesino].derecha==conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].derecha);
 
+  if(document.getElementById(asesino).classList.contains("vision")||document.getElementById(asesino).classList.contains("vision2"))
+  document.getElementById(asesino).classList.add("peligro");
+
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("peligro");
   });
 }
 
 function vision() {
-  document.querySelectorAll(".celda.vision").forEach(celda => {
+  document.querySelectorAll(".celda.vision").forEach(celda => {//quita la vision anterior para actualizarla
     celda.classList.remove("vision");
   });
   document.querySelectorAll(".celda.vision2").forEach(celda => {
@@ -73,9 +67,9 @@ function vision() {
   let celdasAdyacentes2 = [];
 
   // Para cada celda adyacente
-  celdasAdyacentes.forEach(idCelda => {
-    
-    if(document.getElementById(idCelda).classList.contains("celda")){
+  celdasAdyacentes.forEach(idCelda => {//se repite x cada una de las celdas anteriores
+
+    if(document.getElementById(idCelda).classList.contains("celda")){//solo pone vision a las celdas contiguas con vision, puse esto para q no funcione con paredes
 
     if (conexiones[idCelda].arriba) celdasAdyacentes2.push(conexiones[idCelda].arriba);
     if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
@@ -85,7 +79,7 @@ function vision() {
   }
   });
 
-  document.getElementById(jugador).classList.add("vision");
+  document.getElementById(jugador).classList.add("vision");//añade la vision
   
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision");
@@ -173,6 +167,5 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
 // Inicializar el juego
 generarLaberinto();
-posicionPersonajes();
 vision();
 actualizarPeligro();
