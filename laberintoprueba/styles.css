@@ -81,15 +81,27 @@ futuro valor para celdas y muros, lo dejo como comentado para ahora diferenciarl
 }
 
 .celda.vision{
-  opacity: 0.9;
-  animation: brillo 3s infinite;
+  opacity: 1;
+  animation: brillo 5s infinite;
   box-shadow: 0 0 8px #ff4500, 0 0 12px #ff0000 inset;
 }
 
 @keyframes brillo {
-  0% { background-color: #ffee00; }
+  0% { background-color: #d6c800; }
   50% { background-color: #eef76f; }
-  100% { background-color: #ffee00; }
+  100% { background-color: #d6c800; }
+}
+
+.celda.vision2{
+  opacity: 1;
+  animation: brilloLejano 5s infinite;
+  box-shadow: 0 0 8px #ff4500, 0 0 12px #ff0000 inset;
+}
+
+@keyframes brilloLejano {
+  0% { background-color: #8f8501; }
+  50% { background-color: #dbe465; }
+  100% { background-color: #8f8501; }
 }
 
 .celda.peligro {

@@ -22,7 +22,7 @@ function generarLaberinto() {
 function posicionPersonajes() {//colocamos los personajes
 
     if (i === 1) celda.textContent = "😊"; // Jugador
-    if (i === filas * columnas) celda.textContent = "💀"; // Asesino
+    if (i === filas * columnas) celda.textContent = ""; // Asesino
 
 }
 
@@ -31,7 +31,7 @@ function actualizarPeligro() {//zona de peligro
   document.querySelectorAll(".celda.peligro").forEach(celda => {
     celda.classList.remove("peligro");
   });
-//aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje esto en un futuro se cambiara,me gustaria aumentar el radio
+//aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje
   let celdasAdyacentes = [];
   if (conexiones[asesino].arriba==conexiones[jugador].abajo||
       conexiones[asesino].arriba==conexiones[jugador].derecha||
@@ -59,6 +59,9 @@ function vision() {
   document.querySelectorAll(".celda.vision").forEach(celda => {
     celda.classList.remove("vision");
   });
+  document.querySelectorAll(".celda.vision2").forEach(celda => {
+    celda.classList.remove("vision2");
+  });
 
   let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
 
@@ -67,9 +70,33 @@ function vision() {
   if (conexiones[jugador].izquierda) celdasAdyacentes.push(conexiones[jugador].izquierda);
   if (conexiones[jugador].derecha) celdasAdyacentes.push(conexiones[jugador].derecha);
 
+  let celdasAdyacentes2 = [];
 
+  // Para cada celda adyacente
+  celdasAdyacentes.forEach(idCelda => {
+    
+    if(document.getElementById(idCelda).classList.contains("celda")){
+
+    if (conexiones[idCelda].arriba) celdasAdyacentes2.push(conexiones[idCelda].arriba);
+    if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
+    if (conexiones[idCelda].izquierda) celdasAdyacentes2.push(conexiones[idCelda].izquierda);
+    if (conexiones[idCelda].derecha) celdasAdyacentes2.push(conexiones[idCelda].derecha);
+    
+  }
+  });
+
+  document.getElementById(jugador).classList.add("vision");
+  
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision");
+  });
+
+  celdasAdyacentes2.forEach(idCelda => {
+    document.getElementById(idCelda).classList.add("vision2");
+  });
+  
+  document.querySelectorAll(".celda.vision.vision2").forEach(celda => {
+    celda.classList.remove("vision2");
   });
 }
 
@@ -97,6 +124,7 @@ function moverAsesino() {
     while(!celdaDestinoAsesino.classList.contains("celda"))
   document.getElementById(asesino).textContent = "";//la posicion antigua quitamos el emogi
   asesino = asesinoPosicionFutura//como ya sabemos q la posicion es posible, es seguro trasladar al asesino
+  if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
   document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
 
   if (asesino === jugador) {//
@@ -128,12 +156,14 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   jugador = nuevaCeldaID;
   document.getElementById(jugador).textContent = "😊";
 
-  if (document.getElementById(jugador).classList.contains("peligro")) {
-    alert("¡Cuidado! El asesino está cerca... 💀");
-  }
   vision();
   moverAsesino();
   actualizarPeligro();
+
+  if (document.getElementById(jugador).classList.contains("peligro")) {
+    alert("¡Cuidado! El asesino está cerca... 💀");
+  }
+
  
 
   if (jugador === "celda64") {
