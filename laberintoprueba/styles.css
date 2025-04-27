@@ -54,11 +54,6 @@ header {
   box-shadow: inset 0 0 8px #00ff00;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-/* Añadí color a las celdas sombreadas para dar forma al creeper*/
-#celda36,#celda37,#celda43,#celda46,#celda53,#celda52,#celda59,#celda62{
-  background-color: rgb(41, 66, 35);
-  box-shadow: inset 0 0 8px rgb(59, 62, 60);;
-}
 
 .celda:hover {
   transform: scale(1.1);
