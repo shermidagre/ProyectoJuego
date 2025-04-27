@@ -44,6 +44,24 @@ function actualizarPeligro() {
   });
 }
 
+function vision() {
+  document.querySelectorAll(".celda.vision").forEach(celda => {
+    celda.classList.remove("vision");
+  });
+
+  let celdasAdyacentes = [];
+
+  if (conexiones[jugador].arriba) celdasAdyacentes.push(conexiones[jugador].arriba);
+  if (conexiones[jugador].abajo) celdasAdyacentes.push(conexiones[jugador].abajo);
+  if (conexiones[jugador].izquierda) celdasAdyacentes.push(conexiones[jugador].izquierda);
+  if (conexiones[jugador].derecha) celdasAdyacentes.push(conexiones[jugador].derecha);
+
+
+  celdasAdyacentes.forEach(idCelda => {
+    document.getElementById(idCelda).classList.add("vision");
+  });
+}
+
 // Movimiento del asesino
 function moverAsesino() {
   let posiblesDirecciones = [];//ponemos cuales son las casillas contiguas al asesino
@@ -105,6 +123,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
   moverAsesino();
   actualizarPeligro();
+  vision();
 
   if (jugador === "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
@@ -115,3 +134,4 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 generarLaberinto();
 posicionPersonajes();
 actualizarPeligro();
+vision();
