@@ -26,18 +26,29 @@ function posicionPersonajes() {//colocamos los personajes
 
 }
 
-// Actualizar la zona de peligro
-// hay que cambiar esto en un futuro
-function actualizarPeligro() {
+
+function actualizarPeligro() {//zona de peligro
   document.querySelectorAll(".celda.peligro").forEach(celda => {
     celda.classList.remove("peligro");
   });
-
+//aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje esto en un futuro se cambiara,me gustaria aumentar el radio
   let celdasAdyacentes = [];
-  if (conexiones[asesino].arriba) celdasAdyacentes.push(conexiones[asesino].arriba);
-  if (conexiones[asesino].abajo) celdasAdyacentes.push(conexiones[asesino].abajo);
-  if (conexiones[asesino].izquierda) celdasAdyacentes.push(conexiones[asesino].izquierda);
-  if (conexiones[asesino].derecha) celdasAdyacentes.push(conexiones[asesino].derecha);
+  if (conexiones[asesino].arriba==conexiones[jugador].abajo||
+      conexiones[asesino].arriba==conexiones[jugador].derecha||
+      conexiones[asesino].arriba==conexiones[jugador].izquierda
+  ) celdasAdyacentes.push(conexiones[asesino].arriba);
+  if (conexiones[asesino].abajo==conexiones[jugador].arriba||
+      conexiones[asesino].abajo==conexiones[jugador].derecha||
+      conexiones[asesino].abajo==conexiones[jugador].izquierda
+  ) celdasAdyacentes.push(conexiones[asesino].abajo);
+  if (conexiones[asesino].izquierda==conexiones[jugador].derecha||
+      conexiones[asesino].izquierda==conexiones[jugador].arriba||
+      conexiones[asesino].izquierda==conexiones[jugador].abajo
+  ) celdasAdyacentes.push(conexiones[asesino].izquierda);
+  if (conexiones[asesino].derecha==conexiones[jugador].izquierda||
+      conexiones[asesino].derecha==conexiones[jugador].arriba||
+      conexiones[asesino].derecha==conexiones[jugador].abajo
+  ) celdasAdyacentes.push(conexiones[asesino].derecha);
 
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("peligro");
@@ -49,7 +60,7 @@ function vision() {
     celda.classList.remove("vision");
   });
 
-  let celdasAdyacentes = [];
+  let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
 
   if (conexiones[jugador].arriba) celdasAdyacentes.push(conexiones[jugador].arriba);
   if (conexiones[jugador].abajo) celdasAdyacentes.push(conexiones[jugador].abajo);
@@ -120,10 +131,10 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   if (document.getElementById(jugador).classList.contains("peligro")) {
     alert("¡Cuidado! El asesino está cerca... 💀");
   }
-
+  vision();
   moverAsesino();
   actualizarPeligro();
-  vision();
+ 
 
   if (jugador === "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
@@ -133,5 +144,5 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 // Inicializar el juego
 generarLaberinto();
 posicionPersonajes();
-actualizarPeligro();
 vision();
+actualizarPeligro();
