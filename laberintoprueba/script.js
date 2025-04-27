@@ -18,26 +18,31 @@ function generarLaberinto() {
   }
 }
 
-
-function posicionPersonajes() {//colocamos los personajes
-
-    if (i === 1) celda.textContent = "😊"; // Jugador
-    if (i === filas * columnas) celda.textContent = "💀"; // Asesino
-
-}
-
-// Actualizar la zona de peligro
-// hay que cambiar esto en un futuro
-function actualizarPeligro() {
+function actualizarPeligro() {//zona de peligro
   document.querySelectorAll(".celda.peligro").forEach(celda => {
     celda.classList.remove("peligro");
   });
-
+//aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje
   let celdasAdyacentes = [];
-  if (conexiones[asesino].arriba) celdasAdyacentes.push(conexiones[asesino].arriba);
-  if (conexiones[asesino].abajo) celdasAdyacentes.push(conexiones[asesino].abajo);
-  if (conexiones[asesino].izquierda) celdasAdyacentes.push(conexiones[asesino].izquierda);
-  if (conexiones[asesino].derecha) celdasAdyacentes.push(conexiones[asesino].derecha);
+  if (conexiones[asesino].arriba==conexiones[jugador].abajo||
+      conexiones[asesino].arriba==conexiones[jugador].derecha||
+      conexiones[asesino].arriba==conexiones[jugador].izquierda
+  ) celdasAdyacentes.push(conexiones[asesino].arriba);
+  if (conexiones[asesino].abajo==conexiones[jugador].arriba||
+      conexiones[asesino].abajo==conexiones[jugador].derecha||
+      conexiones[asesino].abajo==conexiones[jugador].izquierda
+  ) celdasAdyacentes.push(conexiones[asesino].abajo);
+  if (conexiones[asesino].izquierda==conexiones[jugador].derecha||
+      conexiones[asesino].izquierda==conexiones[jugador].arriba||
+      conexiones[asesino].izquierda==conexiones[jugador].abajo
+  ) celdasAdyacentes.push(conexiones[asesino].izquierda);
+  if (conexiones[asesino].derecha==conexiones[jugador].izquierda||
+      conexiones[asesino].derecha==conexiones[jugador].arriba||
+      conexiones[asesino].derecha==conexiones[jugador].abajo
+  ) celdasAdyacentes.push(conexiones[asesino].derecha);
+
+  if(document.getElementById(asesino).classList.contains("vision")||document.getElementById(asesino).classList.contains("vision2"))
+  document.getElementById(asesino).classList.add("peligro");
 
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("peligro");
@@ -45,21 +50,61 @@ function actualizarPeligro() {
 }
 
 function vision() {
-  document.querySelectorAll(".celda.vision").forEach(celda => {
+  document.querySelectorAll(".celda.vision").forEach(celda => {//quita la vision anterior para actualizarla
     celda.classList.remove("vision");
   });
+  document.querySelectorAll(".celda.vision2").forEach(celda => {
+    celda.classList.remove("vision2");
+  });
+  document.querySelectorAll(".celda.salida").forEach(celda => {
+    celda.classList.remove("salida");
+    document.getElementById('celda64').textContent = "";
+  });
 
-  let celdasAdyacentes = [];
+  let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
 
   if (conexiones[jugador].arriba) celdasAdyacentes.push(conexiones[jugador].arriba);
   if (conexiones[jugador].abajo) celdasAdyacentes.push(conexiones[jugador].abajo);
   if (conexiones[jugador].izquierda) celdasAdyacentes.push(conexiones[jugador].izquierda);
   if (conexiones[jugador].derecha) celdasAdyacentes.push(conexiones[jugador].derecha);
 
+  let celdasAdyacentes2 = [];
 
+  // Para cada celda adyacente
+  celdasAdyacentes.forEach(idCelda => {//se repite x cada una de las celdas anteriores
+
+    if(document.getElementById(idCelda).classList.contains("celda")){//solo pone vision a las celdas contiguas con vision, puse esto para q no funcione con paredes
+
+    if (conexiones[idCelda].arriba) celdasAdyacentes2.push(conexiones[idCelda].arriba);
+    if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
+    if (conexiones[idCelda].izquierda) celdasAdyacentes2.push(conexiones[idCelda].izquierda);
+    if (conexiones[idCelda].derecha) celdasAdyacentes2.push(conexiones[idCelda].derecha);
+    
+  }
+  });
+
+  document.getElementById(jugador).classList.add("vision");//añade la vision
+  
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision");
   });
+
+  celdasAdyacentes2.forEach(idCelda => {
+    document.getElementById(idCelda).classList.add("vision2");
+  });
+  
+  document.querySelectorAll(".celda.vision.vision2").forEach(celda => {
+    celda.classList.remove("vision2");
+  });
+
+  if(document.getElementById('celda64').classList.contains("vision")||document.getElementById('celda64').classList.contains("vision2")){
+    document.getElementById('celda64').classList.add("salida");
+    document.getElementById('celda64').textContent = "🏆";
+    document.querySelectorAll(".celda.salida").forEach(celda => {
+      celda.classList.remove("vision");
+      celda.classList.remove("vision2");
+    });
+  }
 }
 
 // Movimiento del asesino
@@ -86,6 +131,7 @@ function moverAsesino() {
     while(!celdaDestinoAsesino.classList.contains("celda"))
   document.getElementById(asesino).textContent = "";//la posicion antigua quitamos el emogi
   asesino = asesinoPosicionFutura//como ya sabemos q la posicion es posible, es seguro trasladar al asesino
+  if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
   document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
 
   if (asesino === jugador) {//
@@ -117,13 +163,9 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   jugador = nuevaCeldaID;
   document.getElementById(jugador).textContent = "😊";
 
-  if (document.getElementById(jugador).classList.contains("peligro")) {
-    alert("¡Cuidado! El asesino está cerca... 💀");
-  }
-
+  vision();
   moverAsesino();
   actualizarPeligro();
-  vision();
 
   if (jugador === "celda64") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
@@ -132,6 +174,5 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
 // Inicializar el juego
 generarLaberinto();
-posicionPersonajes();
-actualizarPeligro();
 vision();
+actualizarPeligro();
