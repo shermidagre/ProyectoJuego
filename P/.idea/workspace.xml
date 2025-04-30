@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="21d7334a-bf92-4e47-b5e5-a7db77141450" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/basto9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/bigNaipes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/bigNaipesBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/bigNaipesVertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/cardBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/comodines1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/comodines2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/comodines3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/comodines4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/comodines5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/copa9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/espada9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/naipes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/naipesBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/Cartas/oro9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Baraja/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Ej3/prueba.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Ej3/prueba.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pruebas/Ej3/prueba.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2wRLzgwSp7YvPXluhOf8AV28biW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/dam/Documentos/ProyectoJuego/Pruebas"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21d7334a-bf92-4e47-b5e5-a7db77141450" name="Changes" comment="" />
+      <created>1745999704048</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745999704048</updated>
+    </task>
+    <servers />
+  </component>
+</project>
