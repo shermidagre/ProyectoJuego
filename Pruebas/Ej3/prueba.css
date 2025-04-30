@@ -1,0 +1,191 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 40px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    transition: background-color 0.5s ease;
+    background-image: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
+background-color: #f0f4f8;
+
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin-top: 30px;
+    color: #555;
+}
+
+/* Botones */
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 🔁 Transición en todas las propiedades */
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+
+#generarFrase {
+    background-color: #3498db;
+    color: white;
+}
+
+#generar {
+    background-color: #2ecc71;
+    color: white;
+}
+
+#reset {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px); /* Eleva el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Más sombra */
+    opacity: 0.95;
+}
+
+button:active {
+    transform: translateY(0); /* Vuelve a la posición original */
+}
+
+/* Resultados */
+#resultado, #resultadoFrase {
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    margin-top: 15px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-left: 6px solid #3498db;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 1.1em;
+    color: #2c3e50;
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#resultadoFrase {
+    border-left-color: #9b59b6;
+    font-style: italic;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+  
+  .fadeInUp {
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+
+
+  .dark-mode-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.dark-mode-btn .icon {
+    transition: transform 0.3s ease;
+}
+
+.dark-mode-btn:hover .icon {
+    transform: rotate(15deg);
+}
+
+/* Estilo del modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e2f, #2c2c3e);
+    color: #f0f0f0;
+}
+
+body.dark-mode .card,
+body.dark-mode .res,
+body.dark-mode button {
+    background-color: #2a2a3d;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .dark-mode-btn {
+    background-color: #1e1e2f;
+    color: #fff;
+    border-color: #444;
+}

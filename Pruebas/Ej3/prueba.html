@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+<body>
+
+    <button id="toggle-dark-mode" class="dark-mode-btn" title="Cambiar tema">
+        <span class="icon">🌙</span>
+    </button>
+
+    <h1>Esto va a ser un generador de frases</h1>
+    <button id="generarFrase">Genera la frase</button>
+    <h2>Aqui ira el resultado</h2>
+    <div id="resultadoFrase"></div>
+
+
+    <button id="generar" class="generar">Genera el numero</button>
+    
+    <h1>Aquí irá el resultado</h1>
+
+    <div id="resultado" class="res"></div>
+    
+
+    <h1>Generacion de frase con foto</h1>
+    <div class="card">
+      <img id="foto" src="" alt="Foto del personaje">
+      <h2 id="nombre">Nombre</h2>
+      <p id="frase">Aquí aparecerá la frase.</p>
+    </div>
+  
+    <button onclick="mostrarAleatorio()">Genera la frase con su foto y nombre</button>
+   
+    <h2>Este va a ser un botón que haga reset</h2>
+    <button id="reset">Reset</button>
+    
+</body>
+<script src="prueba.js"></script>
+</html>
