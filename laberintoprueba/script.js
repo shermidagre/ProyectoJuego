@@ -1,8 +1,8 @@
-const filas = 8;
- const columnas = 8;
+const filas = 16;
+ const columnas = 16;
  const conexiones = {};
- let jugador = "celda1"; // Posición inicial del jugador
- let asesino = "celda64"; // Posición inicial del asesino
+ let jugador = "celda2"; // Posición inicial del jugador
+ let asesino = "celda153"; // Posición inicial del asesino
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
   for (let fila = 0; fila < filas; fila++) {
@@ -58,7 +58,7 @@ function vision() {
   });
   document.querySelectorAll(".celda.salida").forEach(celda => {
     celda.classList.remove("salida");
-    document.getElementById('celda64').textContent = "";
+    document.getElementById('celda255').textContent = "";
   });
 
   let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
@@ -97,9 +97,9 @@ function vision() {
     celda.classList.remove("vision2");
   });
 
-  if(document.getElementById('celda64').classList.contains("vision")||document.getElementById('celda64').classList.contains("vision2")){
-    document.getElementById('celda64').classList.add("salida");
-    document.getElementById('celda64').textContent = "🏆";
+  if(document.getElementById('celda255').classList.contains("vision")||document.getElementById('celda255').classList.contains("vision2")){
+    document.getElementById('celda255').classList.add("salida");
+    document.getElementById('celda255').textContent = "🏆";
     document.querySelectorAll(".celda.salida").forEach(celda => {
       celda.classList.remove("vision");
       celda.classList.remove("vision2");
@@ -167,7 +167,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   moverAsesino();
   actualizarPeligro();
 
-  if (jugador == "celda64") {
+  if (jugador == "celda255") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
   }
 });
