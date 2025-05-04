@@ -1,4 +1,3 @@
-
 /* Estilos CSS */
 body {
   font-family: "Press Start 2P", cursive;
@@ -30,11 +29,12 @@ header {
 }
 
 #laberinto {
+  zoom: 0.62;
   display: grid;
   grid-template-columns: repeat(16, 40px); /* 10 columnas */
   gap: 4px; /* Espacio entre celdas */
   justify-content: center;
-  margin: 140px auto;
+  margin: 100px auto;
   
   border: 4px double #00ffff;
   padding: 10px;
@@ -136,7 +136,13 @@ futuro valor para celdas y muros, lo dejo como comentado para ahora diferenciarl
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
-
+/* asesino */
+.asesino {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
 footer {
   padding: 10px;
   background: linear-gradient(90deg, #000080, #001f3f);
@@ -152,4 +158,42 @@ footer {
   background-image: url('./imágenes/fondonombre.jpg');
   background-size: cover;
   background-position: center;
+}
+
+/* ANIMACIÓN DE GAME OVER */
+#gameOverAviso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* oculto al principio */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#gameOverAviso img {
+  
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: aparecer 1s ease-out forwards;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#gameOverAviso img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; /* Hace que se estire para cubrir eso */
+  animation: aparecer 0s ease-out forwards;
 }
