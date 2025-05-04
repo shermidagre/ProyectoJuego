@@ -43,8 +43,6 @@ function crearLaberinto1() {
     // Colocar al jugador y al asesino
 
     if (i === 2) celda.textContent = "😊"; // Jugador
-   // if (i === 153) celda.textContent = "💀"; // Asesino
-   //ASESINO IMAGEN
    if (i === 153) {
     const imgAsesino = document.createElement("img");
     imgAsesino.src = "./personajes/parca.jpg"; 
