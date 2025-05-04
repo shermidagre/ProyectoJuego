@@ -194,6 +194,6 @@ footer {
 #gameOverAviso img {
   width: 100%;
   height: 80%;
-  object-fit: cover; /* Hace que se estire para cubrir todo */
+  object-fit: cover; /* Hace que se estire para cubrir eso */
   animation: aparecer 0s ease-out forwards;
 }
