@@ -18,17 +18,20 @@ function generarLaberinto() {
   }
 }
 
-const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 
-                          34, 38, 42, 46, 50, 51, 52, 53, 54, 56, 57, 58, 59, 60, 62, 63,
-                          68, 70, 76, 82, 83, 84, 86, 88, 89, 90, 91, 92, 93, 94, 95,
-                          102, 104, 106, 110, 114, 115, 116, 117, 118, 120, 122, 123, 124, 126, 127,
-                          130, 132, 136, 140, 146, 148, 149, 150, 151, 152, 153, 154, 156, 157, 158, 159,
-                          162, 166, 170, 175, 178, 180, 181, 182, 184, 185, 186, 188, 189, 190, 191,
-                          194, 196, 200, 204, 210, 212, 214, 215, 216, 218, 219, 220, 221, 222, 223,
-                          226, 227, 228, 229, 230, 232, 233, 234, 239, 255];
+
 
 // Crear el laberinto
-function crearLaberinto() {
+function crearLaberinto1() {
+
+  const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 
+    34, 38, 42, 46, 50, 51, 52, 53, 54, 56, 57, 58, 59, 60, 62, 63,
+    68, 70, 76, 82, 83, 84, 86, 88, 89, 90, 91, 92, 93, 94, 95,
+    102, 104, 106, 110, 114, 115, 116, 117, 118, 120, 122, 123, 124, 126, 127,
+    130, 132, 136, 140, 146, 148, 149, 150, 151, 152, 153, 154, 156, 157, 158, 159,
+    162, 166, 170, 175, 178, 180, 181, 182, 184, 185, 186, 188, 189, 190, 191,
+    194, 196, 200, 204, 210, 212, 214, 215, 216, 218, 219, 220, 221, 222, 223,
+    226, 227, 228, 229, 230, 232, 233, 234, 239, 255];
+
   const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
@@ -204,6 +207,21 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
 // Inicializar el juego
 generarLaberinto();
-crearLaberinto();
+/*
+const resultado = Math.floor(Math.random() * 3) + 1;
+
+if (resultado === 1) {
+*/
+  crearLaberinto1();
+/*
+} else if (resultado === 2) {
+  crearLaberinto2();
+} else if (resultado === 3){
+  crearLaberinto3();
+} else {
+  console.log("Error al elegir que laberinto crear");
+}
+*/
+
 vision();
 actualizarPeligro();
