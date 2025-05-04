@@ -45,7 +45,16 @@ function crearLaberinto1() {
     // Colocar al jugador y al asesino
 
     if (i === 2) celda.textContent = "😊"; // Jugador
-    if (i === 153) celda.textContent = "💀"; // Asesino
+   // if (i === 153) celda.textContent = "💀"; // Asesino
+   //ASESINO IMAGEN
+   if (i === 153) {
+    const imgAsesino = document.createElement("img");
+    imgAsesino.src = "./personajes/parca.jpg"; 
+    imgAsesino.alt = "Asesino";
+    imgAsesino.classList.add("asesino"); // para editarlo con CSS
+    celda.appendChild(imgAsesino);
+  }
+
 
     laberintoDiv.appendChild(celda);
   }
@@ -162,17 +171,33 @@ function moverAsesino() {
       }
     }
     while(!celdaDestinoAsesino.classList.contains("celda"))
-  document.getElementById(asesino).textContent = "";//la posicion antigua quitamos el emogi
-  asesino = asesinoPosicionFutura//como ya sabemos q la posicion es posible, es seguro trasladar al asesino
-  if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
-  document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
+      document.getElementById(asesino).textContent = ""; // Borra imagen anterior
+    asesino = asesinoPosicionFutura;
+    
+    // Solo mostrar al asesino si está en el campo de visión
+    if (celdaDestinoAsesino.classList.contains("vision") || celdaDestinoAsesino.classList.contains("vision2")) {
+      const imgAsesino = document.createElement("img");
+      imgAsesino.src = "./personajes/parca.jpg"; // ← cambia esto por la ruta correcta
+      imgAsesino.alt = "Asesino";
+      imgAsesino.classList.add("asesino");
+      document.getElementById(asesino).appendChild(imgAsesino);
+    }
+    /*
+    document.getElementById(asesino).textContent = "";//la posicion antigua quitamos el emogi
+    asesino = asesinoPosicionFutura//como ya sabemos q la posicion es posible, es seguro trasladar al asesino
+    if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
+    document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
+    */
 
   if (asesino === jugador) {//
   // 
   // <--hay q cambiar esto, tenemos que poner que solo pierda si el asesino se coloca en la antigua posicion del jugado y a la vez la viceversa-->
 
     alert("¡El asesino te ha atrapado! 💀 Game Over.");
-  }
+    // Mostrar el mensaje de Game Over y el GIF
+    const avisoGameOver = document.getElementById("gameOverAviso");
+    avisoGameOver.style.display = "flex";}
+  
 }
 
 // Evento de movimiento del jugador
