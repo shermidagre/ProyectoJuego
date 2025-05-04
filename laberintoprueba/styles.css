@@ -28,6 +28,47 @@ header {
 
 }
 
+.aviso-cookies {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.aviso-contenido {
+  background: rgb(80, 6, 6);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.aviso-contenido p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.aviso-contenido button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.aviso-contenido button:hover {
+  background-color: #0056b3;
+}
+
 #laberinto {
   zoom: 0.62;
   display: grid;

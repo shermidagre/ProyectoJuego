@@ -18,8 +18,6 @@ function generarLaberinto() {
   }
 }
 
-
-
 // Crear el laberinto
 function crearLaberinto1() {
 
@@ -188,18 +186,14 @@ function moverAsesino() {
     if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
     document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
     */
-
-  if (asesino === jugador) {//
-  // 
-  // <--hay q cambiar esto, tenemos que poner que solo pierda si el asesino se coloca en la antigua posicion del jugado y a la vez la viceversa-->
-
-    alert("¡El asesino te ha atrapado! 💀 Game Over.");
-    // Mostrar el mensaje de Game Over y el GIF
-    const avisoGameOver = document.getElementById("gameOverAviso");
-    avisoGameOver.style.display = "flex";}
   
+  if (asesino === jugador) {
+    document.getElementById('avisoCookies').style.display = 'flex';
 }
-
+}
+function ocultarAviso() {
+  document.getElementById('avisoCookies').style.display = 'none';
+}
 // Evento de movimiento del jugador
 document.addEventListener("keydown", function (event) {//direccion asignada via teclas
   let direccion;
@@ -237,7 +231,7 @@ const resultado = Math.floor(Math.random() * 3) + 1;
 
 if (resultado === 1) {
 */
-  crearLaberinto1();
+crearLaberinto1();
 /*
 } else if (resultado === 2) {
   crearLaberinto2();
