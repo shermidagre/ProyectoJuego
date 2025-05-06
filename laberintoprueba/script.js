@@ -19,10 +19,23 @@ function generarLaberinto() {
     }
   }
 }
-
+function crearLaberinto(){
+  const laberintoDiv = document.getElementById("laberinto");
+  for (let i = 1; i <= filas * columnas; i++) {
+    const celda = document.createElement("div");
+    celda.id = `celda${i}`;
+   if (i === 2) celda.textContent = "😊"; // Jugador
+    laberintoDiv.appendChild(celda);
+  }
+}
 // Crear el laberinto
 function crearLaberinto1() {
-
+  document.querySelectorAll(".celda").forEach(celda => {
+    celda.classList.remove("celda");
+  });
+  document.querySelectorAll(".muro").forEach(muro => {
+    muro.classList.remove("muro");
+  });
   const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 
     34, 38, 42, 46, 50, 51, 52, 53, 54, 56, 57, 58, 59, 60, 62, 63,
     68, 70, 76, 82, 83, 84, 86, 88, 89, 90, 91, 92, 93, 94, 95,
@@ -32,27 +45,14 @@ function crearLaberinto1() {
     194, 196, 200, 204, 210, 212, 214, 215, 216, 218, 219, 220, 221, 222, 223,
     226, 227, 228, 229, 230, 232, 233, 234, 239, 255];
 
-  const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
-    const celda = document.createElement("div");
-    celda.id = `celda${i}`;
      if (celdasPermitidas.includes(i)){
-      celda.classList.add("celda");
+      document.getElementById(`celda${i}`).classList.add("celda");
       } 
       else {
-      celda.classList.add("muro");
+      document.getElementById(`celda${i}`).classList.add("muro");
     }
-    // Colocar al jugador y al asesino
 
-    if (i === 2) celda.textContent = "😊"; // Jugador
-   if (i === 153) {
-    const imgAsesino = document.createElement("img");
-    imgAsesino.src = "./personajes/parca.jpg"; 
-    imgAsesino.alt = "Asesino";
-    imgAsesino.classList.add("asesino"); // para editarlo con CSS
-    celda.appendChild(imgAsesino);
-  }
-    laberintoDiv.appendChild(celda);
   }
 }
 
@@ -220,6 +220,8 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
 // Inicializar el juego
 generarLaberinto();
+
+crearLaberinto();
 /*
 const resultado = Math.floor(Math.random() * 3) + 1;
 
