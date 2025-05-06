@@ -21,7 +21,7 @@ function generarLaberinto() {
 // Crear el laberinto
 function crearLaberinto1() {
 
-  const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 
+  const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
     34, 38, 42, 46, 50, 51, 52, 53, 54, 56, 57, 58, 59, 60, 62, 63,
     68, 70, 76, 82, 83, 84, 86, 88, 89, 90, 91, 92, 93, 94, 95,
     102, 104, 106, 110, 114, 115, 116, 117, 118, 120, 122, 123, 124, 126, 127,
@@ -36,7 +36,7 @@ function crearLaberinto1() {
     celda.id = `celda${i}`;
      if (celdasPermitidas.includes(i)){
       celda.classList.add("celda");
-      } 
+      }
       else {
       celda.classList.add("muro");
     }
@@ -45,7 +45,7 @@ function crearLaberinto1() {
     if (i === 2) celda.textContent = "😊"; // Jugador
    if (i === 153) {
     const imgAsesino = document.createElement("img");
-    imgAsesino.src = "./personajes/parca.jpg"; 
+    imgAsesino.src = "./personajes/parca.jpg";
     imgAsesino.alt = "Asesino";
     imgAsesino.classList.add("asesino"); // para editarlo con CSS
     celda.appendChild(imgAsesino);
@@ -117,12 +117,12 @@ function vision() {
     if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
     if (conexiones[idCelda].izquierda) celdasAdyacentes2.push(conexiones[idCelda].izquierda);
     if (conexiones[idCelda].derecha) celdasAdyacentes2.push(conexiones[idCelda].derecha);
-    
+
   }
   });
 
   document.getElementById(jugador).classList.add("vision");//añade la vision
-  
+
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision");
   });
@@ -130,7 +130,7 @@ function vision() {
   celdasAdyacentes2.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision2");
   });
-  
+
   document.querySelectorAll(".celda.vision.vision2").forEach(celda => {
     celda.classList.remove("vision2");
   });
@@ -169,7 +169,7 @@ function moverAsesino() {
     while(!celdaDestinoAsesino.classList.contains("celda"))
       document.getElementById(asesino).textContent = ""; // Borra imagen anterior
     asesino = asesinoPosicionFutura;
-    
+
     // Solo mostrar al asesino si está en el campo de visión
     if (celdaDestinoAsesino.classList.contains("vision") || celdaDestinoAsesino.classList.contains("vision2")) {
       const imgAsesino = document.createElement("img");
@@ -184,7 +184,7 @@ function moverAsesino() {
     if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
     document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
     */
-  
+
   if (asesino === jugador) {
     document.getElementById('avisoCookies').style.display = 'flex';
 }
