@@ -25,7 +25,7 @@ function crearLaberinto(){
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
     celda.id = `celda${i}`;
-   if (i === 2) celda.textContent = "😊"; // Jugador
+   if (i === 2) celda.textContent = "😊"; // Jugadorr
     laberintoDiv.appendChild(celda);
   }
 }
