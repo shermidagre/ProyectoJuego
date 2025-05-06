@@ -3,6 +3,8 @@ const filas = 16;
  const conexiones = {};
  let jugador = "celda2"; // Posición inicial del jugador
  let asesino = "celda153"; // Posición inicial del asesino
+ let pasos = 0;
+ const contenedorPasos = document.getElementById("Pasos");
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
   for (let fila = 0; fila < filas; fila++) {
@@ -50,8 +52,6 @@ function crearLaberinto1() {
     imgAsesino.classList.add("asesino"); // para editarlo con CSS
     celda.appendChild(imgAsesino);
   }
-
-
     laberintoDiv.appendChild(celda);
   }
 }
@@ -178,19 +178,15 @@ function moverAsesino() {
       imgAsesino.classList.add("asesino");
       document.getElementById(asesino).appendChild(imgAsesino);
     }
-    /*
-    document.getElementById(asesino).textContent = "";//la posicion antigua quitamos el emogi
-    asesino = asesinoPosicionFutura//como ya sabemos q la posicion es posible, es seguro trasladar al asesino
-    if (celdaDestinoAsesino.classList.contains("vision")||celdaDestinoAsesino.classList.contains("vision2"))
-    document.getElementById(asesino).textContent = "💀";//colocamos el emogi que simboliza al asesino
-    */
-  
+
   if (asesino === jugador) {
     document.getElementById('avisoCookies').style.display = 'flex';
+    contenedorPasos.innerHTML=`${pasos}`;
 }
 }
 function ocultarAviso() {
   document.getElementById('avisoCookies').style.display = 'none';
+  window.location.href = '../laberintoprueba/index.html';
 }
 // Evento de movimiento del jugador
 document.addEventListener("keydown", function (event) {//direccion asignada via teclas
@@ -212,7 +208,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   document.getElementById(jugador).textContent = "";
   jugador = nuevaCeldaID;
   document.getElementById(jugador).textContent = "😊";
-
+  pasos = pasos + 1;
   vision();
   moverAsesino();
   actualizarPeligro();
