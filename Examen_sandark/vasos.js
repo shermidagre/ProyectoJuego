@@ -9,13 +9,13 @@ document.getElementById("reiniciar").addEventListener("click", function () {
 
         let img = document.createElement("img");
       
-        img.src = `/Exame JavaScript - HTML - CSS/vaso.jpg`;
+        img.src = `../Examen_sandark/vaso.jpg`;
        
         img.alt = `vaso`;
 
-        vaso1.innerHTML =  '<img src="/Exame JavaScript - HTML - CSS/vaso.jpg" alt="vaso">' ;
-        vaso2.innerHTML =  '<img src="/Exame JavaScript - HTML - CSS/vaso.jpg" alt="vaso">' ;
-        vaso3.innerHTML =  '<img src="/Exame JavaScript - HTML - CSS/vaso.jpg" alt="vaso">' ;
+        vaso1.innerHTML =  '<img src="../Examen_sandark/vaso.jpg" alt="vaso">' ;
+        vaso2.innerHTML =  '<img src="../Examen_sandark/vaso.jpg" alt="vaso">' ;
+        vaso3.innerHTML =  '<img src="../Examen_sandark/vaso.jpg" alt="vaso">' ;
         contenedor.innerHTML = "";
     });
     
@@ -27,7 +27,7 @@ document.getElementById("reiniciar").addEventListener("click", function () {
         let valor = Math.floor(Math.random() * 3) + 1;
         if (valor == 1){
             aciertos=aciertos+1;
-            vaso1.innerHTML =  '<img src="/Exame JavaScript - HTML - CSS/moneda.png" alt="moneda">' ;
+            vaso1.innerHTML =  '<img src="../Examen_sandark/moneda.png" alt="moneda">' ;
             contenedor.innerHTML = "acertaste";
             contenedorAciertos.innerHTML=`${aciertos}`;
 

@@ -6,11 +6,6 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  /*fondo GIF */
-  background-image: url('./imágenes/portadaLaberinto.gif');
-  background-size: cover;
-  background-position: center;
                            
 }                              
 

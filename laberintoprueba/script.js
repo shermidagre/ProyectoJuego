@@ -4,6 +4,7 @@ const filas = 16;
  let jugador = "celda2"; // Posición inicial del jugador
  let asesino = "celda153"; // Posición inicial del asesino
  let pasos = 0;
+ let gameOver = false;
  const contenedorPasos = document.getElementById("Pasos");
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
@@ -181,6 +182,7 @@ function moverAsesino() {
     }
 
   if (asesino === jugador) {
+    gameOver = true;
     document.getElementById('avisoCookies').style.display = 'flex';
     contenedorPasos.innerHTML=`${pasos}`;
 }
@@ -190,7 +192,9 @@ function ocultarAviso() {
   window.location.href = '../laberintoprueba/index.html';
 }
 // Evento de movimiento del jugador
+
 document.addEventListener("keydown", function (event) {//direccion asignada via teclas
+  if(gameOver===false){
   let direccion;
   if (event.key === "ArrowUp") direccion = "arriba";
   if (event.key === "ArrowDown") direccion = "abajo";
@@ -217,6 +221,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
   if (jugador == "celda255") {
     alert("¡Felicidades, has escapado del laberinto! 🏆");
   }
+}
 });
 
 // Inicializar el juego
