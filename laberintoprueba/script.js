@@ -233,40 +233,70 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 });
 
 document.getElementById("puntuacionesr").addEventListener("click", () => {
-  avisoCookies.style.display = "none";
-
-  const historial = JSON.parse(localStorage.getItem("historialPartidas")) || [];
+  const historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
 
   if (historial.length === 0) {
-    alert("No hay partidas guardadas aún.");
-    return;
+      alert("No hay partidas guardadas aún.");
+      return;
   }
 
-  // Guardamos temporalmente para mostrar en la tabla
-  localStorage.setItem("tablaPuntuacionesTemp", JSON.stringify(historial));
+  // Ordenar antes de mostrar
+  const ordenado = historial.sort((a, b) => b.pasos - a.pasos).slice(0, 10);
+  localStorage.setItem("tablaPuntuacionesTemp", JSON.stringify(ordenado));
   window.location.href = "TablaPuntuaciones.html";
 });
 
 
 
+
 function guardarIntento() {
   const nombre = localStorage.getItem("nombreJugador") || "Anónimo";
+  const registro = { nombre, pasos };
 
-  const registro = {
-    nombre: nombre,
-    pasos: pasos
-  };
+  let historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
 
-  const historial = JSON.parse(localStorage.getItem("historialPartidas") || "[]");
-  historial.unshift(registro);
+  // Buscar si ya existe este jugador
+  const indice = historial.findIndex(r => r.nombre === nombre);
 
-  if (historial.length > 10) {
-    historial.pop(); // Mantiene solo las últimas 10 partidas
+  if (indice === -1) {
+      // No existe -> Añadimos nuevo
+      historial.push(registro);
+  } else {
+      // Ya existe -> Actualizar si es mejor
+      if (registro.pasos > historial[indice].pasos) {
+          historial[indice].pasos = registro.pasos;
+      }
   }
 
-  localStorage.setItem("historialPartidas", JSON.stringify(historial));
+  // Ordenar por pasos (de mayor a menor)
+  historial.sort((a, b) => b.pasos - a.pasos);
+
+  // Mantener solo las 10 mejores partidas
+  if (historial.length > 10) {
+      historial = historial.slice(0, 10);
+  }
+
+  localStorage.setItem("tablaMejores", JSON.stringify(historial));
 }
 
+
+// Mostrar el mejor jugador al cargar la página
+function mostrarMejorJugador() {
+  // Obtener el historial de mejores jugadores de localStorage 
+  const historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
+
+  if (historial.length === 0) return;
+
+  // Ordenar por pasos y obtener al mejor
+  const mejor = historial.reduce((prev, current) =>
+      (current.pasos > prev.pasos) ? current : prev
+  );
+
+  // Mostrar en pantalla
+  document.getElementById("nombrejugador").textContent = mejor.nombre;
+  document.getElementById("pasosjugador").textContent = mejor.pasos;
+  document.getElementById("mejorjugador").style.display = "block";
+}
 
 
 // Inicializar el juego
@@ -292,4 +322,4 @@ crearLaberinto1();
 
 vision();
 actualizarPeligro();
-
+mostrarMejorJugador();

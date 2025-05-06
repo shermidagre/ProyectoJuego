@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
       historialOrdenado.forEach((registro) => {
         const fila = document.createElement("tr");
   
+
+
+        
         let mensaje;
         let color;
   
@@ -35,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
         fila.innerHTML = `
           <td>${registro.nombre}</td>
-          <td style="color:${color}">${registro.pasos} — <small>${mensaje}</small></td>
+          <td style="color:${color}">${registro.pasos} — <small>${mensaje} <</small></td>
         `;
         tablaBody.appendChild(fila);
       });
@@ -47,9 +50,4 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html"; // Ajusta esta ruta si es necesario
     });
 
-    const mejor = historial.reduce((mejor, actual) =>
-        actual.pasos > mejor.pasos ? actual : mejor
-      );
-      
-      alert(` El mejor jugador es: ${mejor.nombre} con ${mejor.pasos} pasos`);
   });

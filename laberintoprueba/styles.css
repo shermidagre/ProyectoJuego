@@ -220,33 +220,64 @@ footer {
 }
 
 .puntuacionesr {
-  margin-bottom: 15px;
-  padding: 10px 25px;
-  background-color: #fdd835;
-  border: none;
-  border-radius: 12px;
-  color: #403200;
-  font-weight: 700;
-  font-family: 'Freckle Face', cursive, sans-serif;
-  font-size: 1.2rem;
-  box-shadow: 0 0 12px #fbc02d inset;
+ margin-bottom: 250px;
+  padding: 10px 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0,5rem;
+  background-color: #212121; /* Fondo oscuro */
+  color: #ffffff;
+  border: 2px solid #424242;
+  border-radius: 8px;
   cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s ease;
+  text-shadow: 1px 1px #000;
+  box-shadow:
+    0 0 5px #424242,
+    0 0 10px #616161 inset;
+  transition: all 0.3s ease;
 }
 
-.puntuacionesr:hover,
-.puntuacionesr:focus {
-  background-color: #0056b3;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+.puntuacionesr:hover {
+  background-color: #424242;
+  border-color: #616161;
+  transform: scale(1.05);
 }
 
 .puntuacionesr:active {
-  background-color: #004494;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(0.98);
 }
 
-.puntuacionesr:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #00ffff;
+
+
+.mejorjugador {
+  margin-top: 35px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #3bd8ff;
+  text-shadow:
+    0 0 5px #3be8ff,
+    0 0 10px #3bffef,
+    0 0 20px #3be8ff79,
+    0 0 40px #26d4ff;
+  background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(30,30,30,0.9));
+  padding: 15px 25px;
+  border: 2px solid #3bffef;
+  border-radius: 12px;
+  display: inline-block;
+  animation: parpadeoBrillante 3s infinite;
+  box-shadow:
+    0 0 10px #3bffff,
+    0 0 20px #3be8ff,
+    inset 0 0 10px #3bffef;
+}
+
+@keyframes parpadeoBrillante {
+  0%, 80% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  40% {
+    filter: brightness(1.2);
+    transform: scale(1.03);
+  }
 }
