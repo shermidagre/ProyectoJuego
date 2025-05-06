@@ -19,6 +19,7 @@ function generarLaberinto() {
     }
   }
 }
+// Crear el laberinto
 function crearLaberinto(){
   const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
@@ -28,7 +29,7 @@ function crearLaberinto(){
     laberintoDiv.appendChild(celda);
   }
 }
-// Crear el laberinto
+// Crear el laberinto 1
 function crearLaberinto1() {
   document.querySelectorAll(".celda").forEach(celda => {
     celda.classList.remove("celda");
