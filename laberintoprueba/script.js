@@ -48,7 +48,7 @@ for(j=1;j<100;j++) {
 for(i=n1; i<=n2;i+=2){
   secuencia.push(i);
 }
-if(j%2){
+if(j%2!=0){
   n1+=15;
   n2+=15;
 }
