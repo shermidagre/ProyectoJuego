@@ -9,9 +9,10 @@ let cantidaddeFantasmas = 0;
 let tiempodeInvulnerabilidad = 0;
 let invulnerabilidad = false;
 let recogidoPowerup = false;
-let pulgar=  false;
+let pulgar = false;
 let posibleCasilladeFantasma = "a";
 let pasos = 0;
+let puntuacion = 0;
 let laberintos = 1;
 let gameOver = false;
 const contenedorPasos = document.getElementById("Pasos");
@@ -89,12 +90,12 @@ function crearLaberinto1() {
   powerup = "celda154";
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
-    do { 
-      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127)+ 1)*2);
+    do {
+      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127) + 1) * 2);
     } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
-    fantasmas[`fantasma${i}`] =  posibleCasilladeFantasma;
+    fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
   }
-  
+
 
 }
 
@@ -142,12 +143,12 @@ function crearLaberinto2() {
   powerup = "celda232";
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
-    do { 
-      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127)+ 1)*2);
+    do {
+      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127) + 1) * 2);
     } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
-    fantasmas[`fantasma${i}`] =  posibleCasilladeFantasma;
+    fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
   }
-  
+
 }
 
 
@@ -186,36 +187,37 @@ function actualizarPeligro() {//zona de peligro
       conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].izquierda
     ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].arriba);
-  
+
     if (conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].izquierda
     ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].abajo);
-  
+
     if (conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].abajo
     ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].izquierda);
-  
+
     if (conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].izquierda ||
       conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].abajo
     ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].derecha);
   }
 
-  if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2")){
+  if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2")) {
     document.getElementById(asesino).classList.add("peligro");
-  celdasAdyacentes.forEach(idCelda => {
-    document.getElementById(idCelda).classList.add("peligro");
-  });
-}
+    celdasAdyacentes.forEach(idCelda => {
+      document.getElementById(idCelda).classList.add("peligro");
+    });
+  }
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
-  if (document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision") || document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision2")){
-    document.getElementById(fantasmas[`fantasma${i}`]).classList.add("peligro");
-  celdasAdyacentes.forEach(idCelda => {
-    document.getElementById(idCelda).classList.add("peligro");
-  });}
+    if (document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision") || document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision2")) {
+      document.getElementById(fantasmas[`fantasma${i}`]).classList.add("peligro");
+      celdasAdyacentes.forEach(idCelda => {
+        document.getElementById(idCelda).classList.add("peligro");
+      });
+    }
   }
 
 
@@ -236,6 +238,11 @@ function vision() {
     celda.classList.remove("salida");
     document.getElementById('celda255').textContent = "";
   });
+  document.querySelectorAll(".celda.powerup").forEach(celda => {
+    celda.classList.remove("powerup");
+    document.getElementById(powerup).innerHTML = '';
+  });
+
 
   let celdasAdyacentes = [];//basicamente que las celdas contiguas al personaje sean su vision
 
@@ -336,8 +343,9 @@ function moverFantasma() {
       document.getElementById('avisoCookies').style.display = 'flex';
       contenedorPasos.innerHTML = `${pasos}`;
       contenedorLaberintosPuntuacion.innerHTML = `${laberintos - 1}`;
-      if (laberintos != 1) contenedorPuntuacion.innerHTML = `${pasos * (laberintos - 1)}`;
-      else contenedorPuntuacion.innerHTML = `${pasos * laberintos / 2}`;
+      if (laberintos != 1) puntuacion = pasos * (laberintos - 1);
+      else puntuacion = pasos * laberintos / 2;
+      contenedorPuntuacion.innerHTML = `${puntuacion}`;
     }
   }
 }
@@ -384,8 +392,9 @@ function moverAsesino() {
     document.getElementById('avisoCookies').style.display = 'flex';
     contenedorPasos.innerHTML = `${pasos}`;
     contenedorLaberintosPuntuacion.innerHTML = `${laberintos - 1}`;
-    if (laberintos != 1) contenedorPuntuacion.innerHTML = `${pasos * (laberintos - 1)}`;
-    else contenedorPuntuacion.innerHTML = `${pasos * laberintos / 2}`;
+    if (laberintos != 1) puntuacion = pasos * (laberintos - 1);
+    else puntuacion = pasos * laberintos / 2;
+    contenedorPuntuacion.innerHTML = `${puntuacion}`;
   }
 }
 
@@ -394,8 +403,16 @@ function moverAsesino() {
 
 
 function ocultarAviso() {
+  const nombre = prompt("Ingresa tu nombre para esta partida:");
+  if (!nombre) {
+    localStorage.setItem("nombreJugador", "Anónimo");
+  } else {
+    localStorage.setItem("nombreJugador", nombre);
+  }
+
   document.getElementById('avisoCookies').style.display = 'none';
-  window.location.href = '../laberintoprueba/index.html';
+  guardarIntento();
+  window.location.href = 'index.html';
 }
 
 
@@ -472,6 +489,81 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
 
 
+document.getElementById("puntuacionesr").addEventListener("click", () => {
+  const historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
+
+  if (historial.length === 0) {
+    alert("No hay partidas guardadas aún.");
+    return;
+  }
+
+  // Ordenar antes de mostrar
+  const ordenado = historial.sort((a, b) => b.puntuacion - a.puntuacion).slice(0, 10);
+  localStorage.setItem("tablaPuntuacionesTemp", JSON.stringify(ordenado));
+  window.location.href = "TablaPuntuaciones.html";
+});
+
+
+
+
+
+function guardarIntento() {
+  const nombre = localStorage.getItem("nombreJugador") || "Anónimo";
+  const registro = { nombre, puntuacion };
+
+  let historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
+
+  // Buscar si ya existe este jugador
+  const indice = historial.findIndex(r => r.nombre === nombre);
+
+  if (indice === -1) {
+    // No existe -> Añadimos nuevo
+    historial.push(registro);
+  } else {
+    // Ya existe -> Actualizar si es mejor
+    if (registro.puntuacion > historial[indice].puntuacion) {
+      historial[indice].puntuacion = registro.puntuacion;
+    }
+  }
+
+  // Ordenar por pasos (de mayor a menor)
+  historial.sort((a, b) => b.puntuacion - a.puntuacion);
+
+  // Mantener solo las 10 mejores partidas
+  if (historial.length > 10) {
+    historial = historial.slice(0, 10);
+  }
+
+  localStorage.setItem("tablaMejores", JSON.stringify(historial));
+}
+
+
+
+
+
+
+// Mostrar el mejor jugador al cargar la página
+function mostrarMejorJugador() {
+  // Obtener el historial de mejores jugadores de localStorage 
+  const historial = JSON.parse(localStorage.getItem("tablaMejores")) || [];
+
+  if (historial.length === 0) return;
+
+  // Ordenar por pasos y obtener al mejor
+  const mejor = historial.reduce((prev, current) =>
+    (current.puntuacion > prev.pasos) ? current : prev
+  );
+
+  // Mostrar en pantalla
+  document.getElementById("nombrejugador").textContent = mejor.nombre;
+  document.getElementById("pasosjugador").textContent = mejor.puntuacion;
+  document.getElementById("mejorjugador").style.display = "block";
+}
+
+
+
+
+
 // Inicializar el juego
 generarLaberinto();
 
@@ -492,3 +584,5 @@ if (resultado === 1) {
 
 vision();
 actualizarPeligro();
+mostrarMejorJugador();
+

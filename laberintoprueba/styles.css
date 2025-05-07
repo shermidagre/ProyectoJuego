@@ -206,3 +206,67 @@ footer {
   background-size: cover;
   background-position: center;
 }
+
+.puntuacionesr {
+  margin-bottom: 250px;
+   padding: 10px 10px;
+   font-family: 'Press Start 2P', cursive;
+   font-size: 0,5rem;
+   background-color: #212121; /* Fondo oscuro */
+   color: #ffffff;
+   border: 2px solid #424242;
+   border-radius: 8px;
+   cursor: pointer;
+   text-shadow: 1px 1px #000;
+   box-shadow:
+     0 0 5px #424242,
+     0 0 10px #616161 inset;
+   transition: all 0.3s ease;
+ }
+ 
+ .puntuacionesr:hover {
+   background-color: #424242;
+   border-color: #616161;
+   transform: scale(1.05);
+ }
+ 
+ .puntuacionesr:active {
+   transform: scale(0.98);
+ }
+ 
+ 
+ 
+ .mejorjugador {
+   margin-top: 35px;
+   font-family: 'Press Start 2P', cursive;
+   font-size: 1.5rem;
+   font-weight: 400;
+   color: #3bd8ff;
+   text-shadow:
+     0 0 5px #3be8ff,
+     0 0 10px #3bffef,
+     0 0 20px #3be8ff79,
+     0 0 40px #26d4ff;
+   background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(30,30,30,0.9));
+   padding: 15px 25px;
+   border: 2px solid #3bffef;
+   border-radius: 12px;
+   display: inline-block;
+   animation: parpadeoBrillante 3s infinite;
+   box-shadow:
+     0 0 10px #3bffff,
+     0 0 20px #3be8ff,
+     inset 0 0 10px #3bffef;
+ }
+ 
+ @keyframes parpadeoBrillante {
+   0%, 80% {
+     filter: brightness(1);
+     transform: scale(1);
+   }
+   40% {
+     filter: brightness(1.2);
+     transform: scale(1.03);
+   }
+ }
+ 

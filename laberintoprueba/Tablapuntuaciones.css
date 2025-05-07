@@ -1,0 +1,70 @@
+/* Tabla de puntuaciones */
+body {
+    font-family: 'Freckle Face', cursive, sans-serif;
+    background-image: url('./imágenes/fondonombre.jpg');
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffeb3b;
+    text-shadow: 0 0 8px #ffeb3b;
+}
+
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #0a74da88;
+}
+
+th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #00aaff;
+    color: white;
+    font-weight: 700;
+}
+
+tbody tr:hover {
+    background-color: #e0f7ff;
+}
+
+#mensaje {
+    max-width: 600px;
+    margin: 10px auto;
+    text-align: center;
+    color: #005577;
+    font-weight: 700;
+}
+
+#volver {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #004477;
+    background-color: #a0d7ff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0055cc inset;
+    transition: background-color 0.3s ease;
+}
+
+#volver:hover,
+#volver:focus {
+    background-color: #66b3ff;
+    outline: none;
+}
