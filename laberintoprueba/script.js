@@ -21,7 +21,7 @@ const contenedorLaberintosPuntuacion = document.getElementById("LaberintosPuntua
 
 
 const secuencia = []; //estas van a ser las casillas donde se coloquen los fantasmas, para que queden siempre a 1 casilla de distrancia del jugador
-    let num = 2; 
+    /*let num = 2; 
     let cuenta = 0;
     let cuenta2 = 0;
 
@@ -40,7 +40,24 @@ const secuencia = []; //estas van a ser las casillas donde se coloquen los fanta
           cuenta2 = 0; 
         }
     }
-
+*/
+//no me voy a cimplicar la vida +17,+15 
+for(j=1;j<100;j++) {
+  let n1 =49;
+  let n2 =63;
+for(i=n1; i<=n2;i+=2){
+  secuencia.push(i);
+}
+if(j%2){
+  n1+=15;
+  n2+=15;
+}
+else{
+  n1+=17;
+  n2+=17;
+}
+if(n2>256)break;
+}
 
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
@@ -575,8 +592,8 @@ function mostrarMejorJugador() {
 
   // Mostrar en pantalla
   document.getElementById("nombrejugador").textContent = mejor.nombre;
-  document.getElementById("pasosjugador").textContent = mejor.puntuacion;
-  document.getElementById("mejorjugador").style.display = "block";
+  document.getElementById("puntuacionjugador").textContent = mejor.puntuacion;
+  document.getElementById("mejor-jugador").style.display = "block";
 }
 
 
