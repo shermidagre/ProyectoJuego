@@ -325,7 +325,7 @@ function vision() {
     });
   }
 
-  if ((document.getElementById(powerup).classList.contains("vision") || document.getElementById(powerup).classList.contains("vision2")) && !recogidoPowerup) {
+  if ((document.getElementById(powerup).classList.contains("vision") || document.getElementById(powerup).classList.contains("vision2")) && !recogidoPowerup && !document.getElementById(powerup).classList.contains("peligro")) {
     document.getElementById(powerup).classList.add("powerup");
     document.getElementById(powerup).innerHTML = '<img src="./personajes/monster.jpg" alt="monster" class="asesino">';
     document.querySelectorAll(".celda.powerup").forEach(celda => {
@@ -515,14 +515,11 @@ if (gameOver === false) {
       if (resultado === 1) {
 
         crearLaberinto1();
-
       } else if (resultado === 2) {
         crearLaberinto2();
       } else {
         console.log("Error al elegir que laberinto crear");
       }
-      recogidoPowerup = false;
-      invulnerabilidad = false;
       vision();
       actualizarPeligro();
     }
