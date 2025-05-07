@@ -6,29 +6,39 @@ document.addEventListener("DOMContentLoaded", () => {
       tablaBody.innerHTML = "<tr><td colspan='2'>No hay puntuaciones aún.</td></tr>";
     } else {
       // Ordenar de mayor a menor
-      const historialOrdenado = historial.sort((a, b) => b.pasos - a.pasos);
+      const historialOrdenado = historial.sort((a, b) => b.puntuacion - a.puntuacion);
   
-      historialOrdenado.forEach((registro) => {
+      historialOrdenado.forEach((registro,index) => {
         const fila = document.createElement("tr");
   
 
+        // Primero se declara la medalla en un String vacio y luego ya se asigna dependiendo de la posicion
+
+        let medalla = "";
+        if (index === 0) {
+          medalla = "🥇";
+        } else if (index === 1) {
+          medalla = "🥈";
+        } else if (index === 2) {
+          medalla = "🥉";
+        }
 
         
         let mensaje;
         let color;
   
-        if (registro.pasos > 200) {
+        if (registro.puntuacion > 200) {
             mensaje = " El colega es un tryhard de cuidao ";
             color = "purple";
         } 
-        else if (registro.pasos > 100) {
+        else if (registro.puntuacion > 100) {
           mensaje = "  MAS DE 100 PASOS MUY BIEN ";
           color = "blue";
         } 
-         else if (registro.pasos > 50) {
+         else if (registro.puntuacion > 50) {
           mensaje = "  MAS DE 50 PASOS POCO MAS CARDIO ";
           color = "green";
-        } else if (registro.pasos > 30) {
+        } else if (registro.puntuacion > 30) {
           mensaje = " Duras menos que paquirrin";
           color = "orange";
         } else {
@@ -36,11 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
           color = "red";
         }
   
-        fila.innerHTML = `
-          <td>${registro.nombre}</td>
-          <td style="color:${color}">${registro.pasos} — <small>${mensaje} <</small></td>
-        `;
-        tablaBody.appendChild(fila);
+        // Hemos añadido medalla a los tres primeros puestos, simplemente la hemos concatenado con el color, etc
+
+        fila.innerHTML = `  
+        <td>${registro.nombre}</td>
+        <td style="color:${color}">${medalla} ${registro.puntuacion} — <small>${mensaje}</small></td>
+      `;
+      tablaBody.appendChild(fila);
       });
     }
   

@@ -4,37 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retro Gaming Laberinto</title>
+  <title>Proyecto LMXSI</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<header>
-  <h1>Proyecto LMXSI</h1>
-</header>
-<div class="aviso-cookies" id="avisoCookies">
-  <div class="aviso-contenido">
-    <p>Perdiste Mamayema</p>
-    <p>Diste <strong id="Puntuacion" class="Pasos">0</strong> Puntuaciones,</p>
-    <button onclick="ocultarAviso()">Reiniciar</button>
-  </div>
+  <header>
+    <h1>Laberinto a Oscuras</h1>
+  </header>
+  <div class="aviso-cookies" id="avisoCookies">
+    <div class="aviso-contenido">
+        <p>Perdiste Mamayema</p>
+        <p>Diste <strong id="Pasos" class="Pasos">0</strong> pasos</p>
+        <p>Superaste <strong id="LaberintosPuntuacion" class="LaberintosPuntuacion">0</strong> laberintos</p>
+        <p>Puntuacion: <strong id="Puntuacion" class="Puntuacion">0</strong> </p>
+        <button onclick="ocultarAviso()">Reiniciar</button> 
+    </div>
 </div>
-<main>
-  
+  <main>
 
-  <div id="mejor-jugador" class="mejorjugador">
-    Mejor jugador: <span id="nombrejugador">--</span> con <span id="pasosjugador">--</span> pasos
+  <div id="mejorjugador" class="mejorjugador">
+    Mejor jugador: <span id="nombrejugador">--</span> con <span id="puntuacionjugador">--</span> puntos
  </div>
 
   <div id="laberinto"></div>
   <div id="mensaje"></div>
   <div> <button id="puntuacionesr" class="puntuacionesr">Clicka para saber tus puntuaciones</button></div>
-</main>
-<footer>
-  <p>🎮 Laberintos classic 🎮</p>
-</footer>
-<script src="script.js"></script>
+  
+  </main>
+  <footer>
+    <p>🎮 Por Samuel, Alexandre, Miguel, Piero y Gael 🎮</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 
 </html>
