@@ -1,11 +1,23 @@
 const filas = 16;
- const columnas = 16;
- const conexiones = {};
- let jugador = "celda2"; // Posición inicial del jugador
- let asesino = "celda153"; // Posición inicial del asesino
- let pasos = 0;
- let gameOver = false;
- const contenedorPasos = document.getElementById("Pasos");
+const columnas = 16;
+const conexiones = {};
+let jugador = "celda2"; // Posición inicial del jugador
+let asesino = "celda153"; // Posición inicial del asesino
+let powerup = "celda232";
+let tiempodeInvulnerabilidad = 0;
+let invulnerabilidad = false;
+let recogidoPowerup = false;
+let pasos = 0;
+let laberintos= 1;
+let gameOver = false;
+const contenedorPasos = document.getElementById("Pasos");
+const contenedorPuntuacion = document.getElementById("Puntuacion");
+const contenedorLaberintosPuntuacion = document.getElementById("LaberintosPuntuacion");
+
+
+
+
+
 // Función para generar las conexiones del laberinto
 function generarLaberinto() {
   for (let fila = 0; fila < filas; fila++) {
@@ -20,16 +32,28 @@ function generarLaberinto() {
     }
   }
 }
+
+
+
+
+
 // Crear el laberinto
-function crearLaberinto(){
+function crearLaberinto() {
   const laberintoDiv = document.getElementById("laberinto");
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
     celda.id = `celda${i}`;
-   if (i === 2) celda.textContent = "😊"; // Jugadorr
+    if (i === 2){
+    celda.innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+    }
     laberintoDiv.appendChild(celda);
   }
 }
+
+
+
+
+
 // Crear el laberinto 1
 function crearLaberinto1() {
   document.querySelectorAll(".celda").forEach(celda => {
@@ -38,7 +62,7 @@ function crearLaberinto1() {
   document.querySelectorAll(".muro").forEach(muro => {
     muro.classList.remove("muro");
   });
-  const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 
+  const celdasPermitidas = [2, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
     34, 38, 42, 46, 50, 51, 52, 53, 54, 56, 57, 58, 59, 60, 62, 63,
     68, 70, 76, 82, 83, 84, 86, 88, 89, 90, 91, 92, 93, 94, 95,
     102, 104, 106, 110, 114, 115, 116, 117, 118, 120, 122, 123, 124, 126, 127,
@@ -48,46 +72,101 @@ function crearLaberinto1() {
     226, 227, 228, 229, 230, 232, 233, 234, 239, 255];
 
   for (let i = 1; i <= filas * columnas; i++) {
-     if (celdasPermitidas.includes(i)){
+    if (celdasPermitidas.includes(i)) {
       document.getElementById(`celda${i}`).classList.add("celda");
-      } 
-      else {
+    }
+    else {
       document.getElementById(`celda${i}`).classList.add("muro");
     }
-
   }
+  jugador = "celda2";
+  document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+  asesino = "celda153";
+  powerup = "celda154";
 }
+
+
+
+
+
+function crearLaberinto2() {
+  document.querySelectorAll(".celda").forEach(celda => {
+    celda.classList.remove("celda");
+  });
+  document.querySelectorAll(".muro").forEach(muro => {
+    muro.classList.remove("muro");
+  });
+  const celdasPermitidas = [
+    2, 
+    18, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31,
+    34, 35, 36, 40, 44, 47,
+    50, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
+    66, 68, 70, 79,
+    82, 83, 84, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95,
+    98, 102, 104, 108, 110,
+    114, 115, 116, 117, 118, 120, 122, 123, 124, 125, 126, 127,
+    132, 134, 136, 138,
+    146, 148, 150, 151, 152, 153, 154, 156, 157, 158, 159,
+    162, 164, 166, 168, 170, 172, 174,
+    178, 179, 180, 182, 184, 186, 188, 190,
+    194, 198, 202, 203, 204, 206,
+    210, 212, 213, 214, 216, 217, 218, 220, 222, 239,
+    226, 227, 228, 232, 236, 238, 
+    255,
+  ];
+
+  for (let i = 1; i <= filas * columnas; i++) {
+    if (celdasPermitidas.includes(i)) {
+      document.getElementById(`celda${i}`).classList.add("celda");
+    }
+    else {
+      document.getElementById(`celda${i}`).classList.add("muro");
+    }
+  }
+  jugador = "celda2";
+  document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+  asesino = "celda153";
+  powerup = "celda232";
+}
+
+
+
+
 
 function actualizarPeligro() {//zona de peligro
   document.querySelectorAll(".celda.peligro").forEach(celda => {
     celda.classList.remove("peligro");
   });
-//aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje
+  //aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje
   let celdasAdyacentes = [];
-  if (conexiones[asesino].arriba==conexiones[jugador].abajo||
-      conexiones[asesino].arriba==conexiones[jugador].derecha||
-      conexiones[asesino].arriba==conexiones[jugador].izquierda
+  if (conexiones[asesino].arriba == conexiones[jugador].abajo ||
+    conexiones[asesino].arriba == conexiones[jugador].derecha ||
+    conexiones[asesino].arriba == conexiones[jugador].izquierda
   ) celdasAdyacentes.push(conexiones[asesino].arriba);
-  if (conexiones[asesino].abajo==conexiones[jugador].arriba||
-      conexiones[asesino].abajo==conexiones[jugador].derecha||
-      conexiones[asesino].abajo==conexiones[jugador].izquierda
+  if (conexiones[asesino].abajo == conexiones[jugador].arriba ||
+    conexiones[asesino].abajo == conexiones[jugador].derecha ||
+    conexiones[asesino].abajo == conexiones[jugador].izquierda
   ) celdasAdyacentes.push(conexiones[asesino].abajo);
-  if (conexiones[asesino].izquierda==conexiones[jugador].derecha||
-      conexiones[asesino].izquierda==conexiones[jugador].arriba||
-      conexiones[asesino].izquierda==conexiones[jugador].abajo
+  if (conexiones[asesino].izquierda == conexiones[jugador].derecha ||
+    conexiones[asesino].izquierda == conexiones[jugador].arriba ||
+    conexiones[asesino].izquierda == conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].izquierda);
-  if (conexiones[asesino].derecha==conexiones[jugador].izquierda||
-      conexiones[asesino].derecha==conexiones[jugador].arriba||
-      conexiones[asesino].derecha==conexiones[jugador].abajo
+  if (conexiones[asesino].derecha == conexiones[jugador].izquierda ||
+    conexiones[asesino].derecha == conexiones[jugador].arriba ||
+    conexiones[asesino].derecha == conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].derecha);
 
-  if(document.getElementById(asesino).classList.contains("vision")||document.getElementById(asesino).classList.contains("vision2"))
-  document.getElementById(asesino).classList.add("peligro");
+  if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2"))
+    document.getElementById(asesino).classList.add("peligro");
 
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("peligro");
   });
 }
+
+
+
+
 
 function vision() {
   document.querySelectorAll(".celda.vision").forEach(celda => {//quita la vision anterior para actualizarla
@@ -113,18 +192,18 @@ function vision() {
   // Para cada celda adyacente
   celdasAdyacentes.forEach(idCelda => {//se repite x cada una de las celdas anteriores
 
-    if(document.getElementById(idCelda).classList.contains("celda")){//solo pone vision a las celdas contiguas con vision, puse esto para q no funcione con paredes
+    if (document.getElementById(idCelda).classList.contains("celda")) {//solo pone vision a las celdas contiguas con vision, puse esto para q no funcione con paredes
 
-    if (conexiones[idCelda].arriba) celdasAdyacentes2.push(conexiones[idCelda].arriba);
-    if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
-    if (conexiones[idCelda].izquierda) celdasAdyacentes2.push(conexiones[idCelda].izquierda);
-    if (conexiones[idCelda].derecha) celdasAdyacentes2.push(conexiones[idCelda].derecha);
-    
-  }
+      if (conexiones[idCelda].arriba) celdasAdyacentes2.push(conexiones[idCelda].arriba);
+      if (conexiones[idCelda].abajo) celdasAdyacentes2.push(conexiones[idCelda].abajo);
+      if (conexiones[idCelda].izquierda) celdasAdyacentes2.push(conexiones[idCelda].izquierda);
+      if (conexiones[idCelda].derecha) celdasAdyacentes2.push(conexiones[idCelda].derecha);
+
+    }
   });
 
   document.getElementById(jugador).classList.add("vision");//añade la vision
-  
+
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision");
   });
@@ -132,12 +211,12 @@ function vision() {
   celdasAdyacentes2.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("vision2");
   });
-  
+
   document.querySelectorAll(".celda.vision.vision2").forEach(celda => {
     celda.classList.remove("vision2");
   });
 
-  if(document.getElementById('celda255').classList.contains("vision")||document.getElementById('celda255').classList.contains("vision2")){
+  if (document.getElementById('celda255').classList.contains("vision") || document.getElementById('celda255').classList.contains("vision2")) {
     document.getElementById('celda255').classList.add("salida");
     document.getElementById('celda255').textContent = "🏆";
     document.querySelectorAll(".celda.salida").forEach(celda => {
@@ -145,7 +224,20 @@ function vision() {
       celda.classList.remove("vision2");
     });
   }
+
+  if ((document.getElementById(powerup).classList.contains("vision") || document.getElementById(powerup).classList.contains("vision2")) && !recogidoPowerup) {
+    document.getElementById(powerup).classList.add("powerup");
+    document.getElementById(powerup).textContent = "🥚";
+    document.querySelectorAll(".celda.powerup").forEach(celda => {
+      celda.classList.remove("vision");
+      celda.classList.remove("vision2");
+    });
+  }
 }
+
+
+
+
 
 // Movimiento del asesino
 function moverAsesino() {
@@ -161,88 +253,134 @@ function moverAsesino() {
   let asesinoPosicionFutura = conexiones[asesino][direccionAleatoria];//posible posicion futura
   let celdaDestinoAsesino = document.getElementById(asesinoPosicionFutura);//la celda del asesino
   do {
-      // Tenemos que verificar que la casilla no sea un muro, si lo es hacemos q se repita el proceso hasta que sea una celda
-      if (!celdaDestinoAsesino.classList.contains("celda")) {
-        direccionAleatoria = posiblesDirecciones[Math.floor(Math.random() * posiblesDirecciones.length)];
-        asesinoPosicionFutura = conexiones[asesino][direccionAleatoria];
-        celdaDestinoAsesino = document.getElementById(asesinoPosicionFutura);
-      }
+    // Tenemos que verificar que la casilla no sea un muro, si lo es hacemos q se repita el proceso hasta que sea una celda
+    if (!celdaDestinoAsesino.classList.contains("celda")) {
+      direccionAleatoria = posiblesDirecciones[Math.floor(Math.random() * posiblesDirecciones.length)];
+      asesinoPosicionFutura = conexiones[asesino][direccionAleatoria];
+      celdaDestinoAsesino = document.getElementById(asesinoPosicionFutura);
     }
-    while(!celdaDestinoAsesino.classList.contains("celda"))
-      document.getElementById(asesino).textContent = ""; // Borra imagen anterior
-    asesino = asesinoPosicionFutura;
-    
-    // Solo mostrar al asesino si está en el campo de visión
-    if (celdaDestinoAsesino.classList.contains("vision") || celdaDestinoAsesino.classList.contains("vision2")) {
-      const imgAsesino = document.createElement("img");
-      imgAsesino.src = "./personajes/parca.jpg"; // ← cambia esto por la ruta correcta
-      imgAsesino.alt = "Asesino";
-      imgAsesino.classList.add("asesino");
-      document.getElementById(asesino).appendChild(imgAsesino);
-    }
+  }
+  while (!celdaDestinoAsesino.classList.contains("celda"))
+  document.getElementById(asesino).textContent = ""; // Borra imagen anterior
+  asesino = asesinoPosicionFutura;
 
-  if (asesino === jugador) {
+  // Solo mostrar al asesino si está en el campo de visión
+  if (celdaDestinoAsesino.classList.contains("vision") || celdaDestinoAsesino.classList.contains("vision2")) {
+    const imgAsesino = document.createElement("img");
+    imgAsesino.src = "./personajes/parca.jpg"; // ← cambia esto por la ruta correcta
+    imgAsesino.alt = "Asesino";
+    imgAsesino.classList.add("asesino");
+    document.getElementById(asesino).appendChild(imgAsesino);
+  }
+
+  if (asesino === jugador && !invulnerabilidad ) {
     gameOver = true;
     document.getElementById('avisoCookies').style.display = 'flex';
-    contenedorPasos.innerHTML=`${pasos}`;
+    contenedorPasos.innerHTML = `${pasos}`;
+    contenedorLaberintosPuntuacion.innerHTML = `${laberintos-1}`;
+    if(laberintos!=1)contenedorPuntuacion.innerHTML = `${pasos*(laberintos-1)}`;
+    else contenedorPuntuacion.innerHTML = `${pasos*laberintos/2}`;
+  }
 }
-}
+
+
+
+
+
 function ocultarAviso() {
   document.getElementById('avisoCookies').style.display = 'none';
   window.location.href = '../laberintoprueba/index.html';
 }
+
+
+
+
+
 // Evento de movimiento del jugador
-
 document.addEventListener("keydown", function (event) {//direccion asignada via teclas
-  if(gameOver===false){
-  let direccion;
-  if (event.key === "ArrowUp") direccion = "arriba";
-  if (event.key === "ArrowDown") direccion = "abajo";
-  if (event.key === "ArrowLeft") direccion = "izquierda";
-  if (event.key === "ArrowRight") direccion = "derecha";
+  if (gameOver === false) {
+    let direccion;
+    if (event.key === "ArrowUp") direccion = "arriba";
+    if (event.key === "ArrowDown") direccion = "abajo";
+    if (event.key === "ArrowLeft") direccion = "izquierda";
+    if (event.key === "ArrowRight") direccion = "derecha";
 
-  let nuevaCeldaID = conexiones[jugador][direccion];
-  if (!nuevaCeldaID) return;
+    let nuevaCeldaID = conexiones[jugador][direccion];
+    if (!nuevaCeldaID) return;
 
-  // Verificar si la celda destino es un muro
-  const celdaDestino = document.getElementById(nuevaCeldaID);
-  if (celdaDestino.classList.contains("muro")) {
-  return; // No se puede mover si hay un muro
+    // Verificar si la celda destino es un muro
+    const celdaDestino = document.getElementById(nuevaCeldaID);
+    if (celdaDestino.classList.contains("muro")) {
+      return; // No se puede mover si hay un muro
+    }
+
+    document.getElementById(jugador).textContent = "";
+    jugador = nuevaCeldaID;
+    document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+    pasos = pasos + 1;
+    vision();
+    moverAsesino();
+    actualizarPeligro();
+    if (invulnerabilidad){
+      tiempodeInvulnerabilidad = tiempodeInvulnerabilidad -1;
+      if (tiempodeInvulnerabilidad==0) invulnerabilidad = false;
+    }
+    if((jugador == powerup) && !recogidoPowerup){
+      document.getElementById(powerup).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+      tiempodeInvulnerabilidad = 10;
+      document.querySelectorAll(".powerup").forEach(powerup => {
+        powerup.classList.add("vision");
+        powerup.classList.remove("powerup");
+      });
+      recogidoPowerup= true;
+      invulnerabilidad = true;
+    }
+
+    if (jugador == "celda255") {
+      alert(`laberinto ${laberintos} completo`);
+
+      laberintos = laberintos +1;
+
+      const resultado = Math.floor(Math.random() * 2) + 1;
+
+      if (resultado === 1) {
+
+        crearLaberinto1();
+
+      } else if (resultado === 2) {
+        crearLaberinto2();
+      } else {
+        console.log("Error al elegir que laberinto crear");
+      }
+      recogidoPowerup= false;
+      invulnerabilidad = false;
+      vision();
+      actualizarPeligro();
+    }
   }
-
-  document.getElementById(jugador).textContent = "";
-  jugador = nuevaCeldaID;
-  document.getElementById(jugador).textContent = "😊";
-  pasos = pasos + 1;
-  vision();
-  moverAsesino();
-  actualizarPeligro();
-
-  if (jugador == "celda255") {
-    alert("¡Felicidades, has escapado del laberinto! 🏆");
-  }
-}
 });
+
+
+
+
 
 // Inicializar el juego
 generarLaberinto();
 
 crearLaberinto();
-/*
-const resultado = Math.floor(Math.random() * 3) + 1;
+
+const resultado = Math.floor(Math.random() * 2) + 1;
 
 if (resultado === 1) {
-*/
-crearLaberinto1();
-/*
+
+  crearLaberinto1();
+
 } else if (resultado === 2) {
   crearLaberinto2();
-} else if (resultado === 3){
-  crearLaberinto3();
 } else {
   console.log("Error al elegir que laberinto crear");
 }
-*/
+
 
 vision();
 actualizarPeligro();

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Gaming Laberinto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header>
+  <h1>Proyecto LMXSI</h1>
+</header>
+<div class="aviso-cookies" id="avisoCookies">
+  <div class="aviso-contenido">
+    <p>Perdiste Mamayema</p>
+    <p>Diste <strong id="Puntuacion" class="Pasos">0</strong> Puntuaciones,</p>
+    <button onclick="ocultarAviso()">Reiniciar</button>
+  </div>
+</div>
+<main>
+  
+
+  <div id="mejor-jugador" class="mejorjugador">
+    Mejor jugador: <span id="nombrejugador">--</span> con <span id="pasosjugador">--</span> pasos
+ </div>
+
+  <div id="laberinto"></div>
+  <div id="mensaje"></div>
+  <div> <button id="puntuacionesr" class="puntuacionesr">Clicka para saber tus puntuaciones</button></div>
+</main>
+<footer>
+  <p>🎮 Laberintos classic 🎮</p>
+</footer>
+<script src="script.js"></script>
+</body>
+
+</html>
