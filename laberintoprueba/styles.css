@@ -85,8 +85,43 @@ header {
   box-shadow: 0 0 15px #00ffff;
   max-width: fit-content;
 }
-
-.celda {
+/* Color de laberinto 1*/
+#laberinto.laberinto1 .celda{
+  width: 40px;
+  height: 40px;
+  background-color: rgb(8, 230, 0);
+  border: 2px solid black;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  box-shadow: inset 0 0 10px #010133;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/* Color de laberinto 2*/
+#laberinto.laberinto2 .celda{
+  width: 40px;
+  height: 40px;
+  background-color: rgb(14, 18, 245);
+  border: 2px solid black;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  box-shadow: inset 0 0 10px #010133;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/* Color de laberinto 3*/
+#laberinto.laberinto3 .celda{
+  width: 40px;
+  height: 40px;
+  background-color: rgb(245, 14, 195);
+  border: 2px solid black;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  box-shadow: inset 0 0 10px #010133;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/*.celda {
   width: 40px;
   height: 40px;
   background-color: rgb(255, 0, 0);
@@ -97,6 +132,7 @@ header {
   box-shadow: inset 0 0 10px #010133;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
+  */
 /*
 futuro valor para celdas y muros, lo dejo como comentado para ahora diferenciarlos
 .celda {

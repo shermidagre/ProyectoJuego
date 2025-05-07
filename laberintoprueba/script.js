@@ -97,6 +97,10 @@ function crearLaberinto() {
 
 // Crear el laberinto 1
 function crearLaberinto1() {
+  // Agregamos un clase al contenedor del laberinto 1
+  const laberintoDiv = document.getElementById("laberinto");
+  laberintoDiv.className = "laberinto1"; // Cambia la clase del laberinto
+
   document.querySelectorAll(".celda").forEach(celda => {
     celda.classList.remove("celda");
   });
@@ -140,6 +144,10 @@ function crearLaberinto1() {
 
 
 function crearLaberinto2() {
+    // Agregamos un clase al contenedor del laberinto 2
+    const laberintoDiv = document.getElementById("laberinto");
+    laberintoDiv.className = "laberinto2"; // Cambia la clase del laberinto
+
   document.querySelectorAll(".celda").forEach(celda => {
     celda.classList.remove("celda");
   });
@@ -187,7 +195,57 @@ function crearLaberinto2() {
 
 }
 
+function crearLaberinto3() {
+    // Agregamos un clase al contenedor del laberinto 3
+    const laberintoDiv = document.getElementById("laberinto");
+    laberintoDiv.className = "laberinto3"; // Cambia la clase del laberinto
 
+  document.querySelectorAll(".celda").forEach(celda => {
+    celda.classList.remove("celda");
+  });
+  document.querySelectorAll(".muro").forEach(muro => {
+    muro.classList.remove("muro");
+  });
+  const celdasPermitidas = [
+    2,
+    18, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31,
+    34, 35, 36, 40, 44, 47,
+    50, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
+    66, 68, 70, 79,
+    82, 83, 84, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95,
+    98, 102, 104, 108, 110,
+    114, 115, 116, 117, 118, 120, 122, 123, 124, 125, 126, 127,
+    132, 134, 136, 138,
+    146, 148, 150, 151, 152, 153, 154, 156, 157, 158, 159,
+    162, 164, 166, 168, 170, 172, 174,
+    178, 179, 180, 182, 184, 186, 188, 190,
+    194, 198, 202, 203, 204, 206,
+    210, 212, 213, 214, 216, 217, 218, 220, 222, 239,
+    226, 227, 228, 232, 236, 238,
+    255,
+  ];
+
+  for (let i = 1; i <= filas * columnas; i++) {
+    if (celdasPermitidas.includes(i)) {
+      document.getElementById(`celda${i}`).classList.add("celda");
+    }
+    else {
+      document.getElementById(`celda${i}`).classList.add("muro");
+    }
+  }
+  jugador = "celda2";
+  document.getElementById(jugador).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+  asesino = "celda153";
+  powerup = "celda232";
+
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+    do {
+      posibleCasilladeFantasma = 'celda' + Math.floor(Math.random() * secuencia.length);
+    } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
+    fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
+  }
+
+}
 
 
 
@@ -518,7 +576,9 @@ if (gameOver === false) {
 
       } else if (resultado === 2) {
         crearLaberinto2();
-      } else {
+      } else if (resultado === 3){
+        crearLaberinto3();
+      }else{
         console.log("Error al elegir que laberinto crear");
       }
       recogidoPowerup = false;
@@ -613,7 +673,7 @@ generarLaberinto();
 
 crearLaberinto();
 
-const resultado = Math.floor(Math.random() * 2) + 1;
+const resultado = Math.floor(Math.random() * 3) + 1;
 
 if (resultado === 1) {
 
@@ -621,7 +681,9 @@ if (resultado === 1) {
 
 } else if (resultado === 2) {
   crearLaberinto2();
-} else {
+} else if (resultado === 3){
+  crearLaberinto3();
+}else{
   console.log("Error al elegir que laberinto crear");
 }
 
