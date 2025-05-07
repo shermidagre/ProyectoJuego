@@ -48,7 +48,7 @@ for(j=1;j<100;j++) {
 for(i=n1; i<=n2;i+=2){
   secuencia.push(i);
 }
-if(j%2!=0){
+if(j%2==0){
   n1+=15;
   n2+=15;
 }
@@ -126,12 +126,10 @@ function crearLaberinto1() {
   powerup = "celda154";
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
-    do {
-      posibleCasilladeFantasma = 'celda' + Math.floor(Math.random() * secuencia.length);
-    } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
-    fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
-  }
 
+    fantasmas[`fantasma${i}`] = 'celda' + secuencia[Math.floor(Math.random() * secuencia.length) +1];
+
+}
 
 }
 
@@ -179,11 +177,10 @@ function crearLaberinto2() {
   powerup = "celda232";
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
-    do {
-      posibleCasilladeFantasma = 'celda' + Math.floor(Math.random() * secuencia.length);
-    } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
-    fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
-  }
+
+    fantasmas[`fantasma${i}`] = 'celda' + secuencia[Math.floor(Math.random() * secuencia.length) +1];
+
+}
 
 }
 
@@ -218,26 +215,27 @@ function actualizarPeligro() {//zona de peligro
     conexiones[asesino].derecha == conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].derecha);
 
+  let celdasAdyacentesF = [];
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
     if (conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].abajo ||
       conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].izquierda
-    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].arriba);
+    ) celdasAdyacentesF.push(conexiones[fantasmas[`fantasma${i}`]].arriba);
 
     if (conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].izquierda
-    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].abajo);
+    ) celdasAdyacentesF.push(conexiones[fantasmas[`fantasma${i}`]].abajo);
 
     if (conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].derecha ||
       conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].abajo
-    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].izquierda);
+    ) celdasAdyacentesF.push(conexiones[fantasmas[`fantasma${i}`]].izquierda);
 
     if (conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].izquierda ||
       conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].arriba ||
       conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].abajo
-    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].derecha);
+    ) celdasAdyacentesF.push(conexiones[fantasmas[`fantasma${i}`]].derecha);
   }
 
   if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2")) {
@@ -250,7 +248,7 @@ function actualizarPeligro() {//zona de peligro
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
     if (document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision") || document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision2")) {
       document.getElementById(fantasmas[`fantasma${i}`]).classList.add("peligro");
-      celdasAdyacentes.forEach(idCelda => {
+      celdasAdyacentesF.forEach(idCelda => {
         document.getElementById(idCelda).classList.add("peligro");
       });
     }
@@ -509,7 +507,10 @@ if (gameOver === false) {
       alert(`laberinto ${laberintos} completo`);
 
       laberintos = laberintos + 1;
-
+      recogidoPowerup = false;
+      invulnerabilidad = false;
+      tiempodeInvulnerabilidad = 0;
+      
       const resultado = Math.floor(Math.random() * 2) + 1;
 
       if (resultado === 1) {
@@ -522,6 +523,7 @@ if (gameOver === false) {
       }
       vision();
       actualizarPeligro();
+
     }
   }
 });
