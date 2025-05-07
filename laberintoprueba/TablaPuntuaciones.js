@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
             color = "purple";
         } 
         else if (registro.puntuacion > 100) {
-          mensaje = "  MAS DE 100 PASOS MUY BIEN ";
+          mensaje = "  Incerible, más de 100 ";
           color = "blue";
         } 
          else if (registro.puntuacion > 50) {
-          mensaje = "  MAS DE 50 PASOS POCO MAS CARDIO ";
+          mensaje = "  No esta mal, estas mejorando ";
           color = "green";
         } else if (registro.puntuacion > 30) {
           mensaje = " Duras menos que paquirrin";
