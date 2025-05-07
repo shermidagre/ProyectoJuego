@@ -8,10 +8,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  /* fondo GIF */
-  background-image: url('./imágenes/portadaLaberinto.gif');
-  background-size: cover;
-  background-position: center;
+
   overflow: hidden; 
   height: 100vh;
 }                         
@@ -89,7 +86,7 @@ header {
 .celda {
   width: 40px;
   height: 40px;
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(0, 0, 0);
   border: 2px solid black;
   text-align: center;
   line-height: 40px;
@@ -246,7 +243,7 @@ footer {
  .mejorjugador {
    margin-top: 35px;
    font-family: 'Press Start 2P', cursive;
-   font-size: 1.5rem;
+   font-size: 1rem;
    font-weight: 400;
    color: #3bd8ff;
    text-shadow:
@@ -256,24 +253,24 @@ footer {
      0 0 40px #26d4ff;
    background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(30,30,30,0.9));
    padding: 15px 25px;
-   border: 2px solid #3bffef;
-   border-radius: 12px;
+   border: 5px solid #3bffef;
+   border-radius: 15px;
    display: inline-block;
-   animation: parpadeoBrillante 3s infinite;
+   animation: parpadeoBrillante 10s infinite;
    box-shadow:
      0 0 10px #3bffff,
-     0 0 20px #3be8ff,
+     0 0 10px #3be8ff,
      inset 0 0 10px #3bffef;
  }
  
  @keyframes parpadeoBrillante {
    0%, 80% {
      filter: brightness(1);
-     transform: scale(1);
+     transform: scale(0.97);
    }
    40% {
-     filter: brightness(1.2);
-     transform: scale(1.03);
+     filter: brightness(1);
+     transform: scale(0.70);
    }
  }
  

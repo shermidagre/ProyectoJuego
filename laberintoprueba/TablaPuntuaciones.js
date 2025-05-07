@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             color = "purple";
         } 
         else if (registro.puntuacion > 100) {
-          mensaje = "  MAS DE 100 PASOS MUY BIEN ";
+          mensaje = "  Disco nunu ";
           color = "blue";
         } 
          else if (registro.puntuacion > 50) {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
           color = "red";
         }
   
-        // Hemos añadido medalla a los tres primeros puestos, simplemente la hemos concatenado con el color, etc
+        //  añadido medalla a los tres primeros puestos, simplemente la hemos concatenado con el color, etc
 
         fila.innerHTML = `  
         <td>${registro.nombre}</td>
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("tablaPuntuacionesTemp"); // Limpiar después de mostrar
   
     document.getElementById("volver").addEventListener("click", () => {
-      window.location.href = "index.html"; // Ajusta esta ruta si es necesario
+      window.location.href = "index.html"; 
     });
 
   });
