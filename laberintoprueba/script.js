@@ -227,7 +227,7 @@ function vision() {
 
   if ((document.getElementById(powerup).classList.contains("vision") || document.getElementById(powerup).classList.contains("vision2")) && !recogidoPowerup) {
     document.getElementById(powerup).classList.add("powerup");
-    document.getElementById(powerup).textContent = "🥚";
+    document.getElementById(powerup).innerHTML = '<img src="./personajes/monster.jpg" alt="monster" class="asesino">';
     document.querySelectorAll(".celda.powerup").forEach(celda => {
       celda.classList.remove("vision");
       celda.classList.remove("vision2");
