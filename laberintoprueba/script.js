@@ -1,14 +1,18 @@
 const filas = 16;
 const columnas = 16;
 const conexiones = {};
+const fantasmas = {};
 let jugador = "celda2"; // Posición inicial del jugador
 let asesino = "celda153"; // Posición inicial del asesino
 let powerup = "celda232";
+let cantidaddeFantasmas = 0;
 let tiempodeInvulnerabilidad = 0;
 let invulnerabilidad = false;
 let recogidoPowerup = false;
+let pulgar=  false;
+let posibleCasilladeFantasma = "a";
 let pasos = 0;
-let laberintos= 1;
+let laberintos = 1;
 let gameOver = false;
 const contenedorPasos = document.getElementById("Pasos");
 const contenedorPuntuacion = document.getElementById("Puntuacion");
@@ -43,8 +47,8 @@ function crearLaberinto() {
   for (let i = 1; i <= filas * columnas; i++) {
     const celda = document.createElement("div");
     celda.id = `celda${i}`;
-    if (i === 2){
-    celda.innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+    if (i === 2) {
+      celda.innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
     }
     laberintoDiv.appendChild(celda);
   }
@@ -80,9 +84,18 @@ function crearLaberinto1() {
     }
   }
   jugador = "celda2";
-  document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+  document.getElementById(jugador).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
   asesino = "celda153";
   powerup = "celda154";
+
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+    do { 
+      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127)+ 1)*2);
+    } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
+    fantasmas[`fantasma${i}`] =  posibleCasilladeFantasma;
+  }
+  
+
 }
 
 
@@ -97,7 +110,7 @@ function crearLaberinto2() {
     muro.classList.remove("muro");
   });
   const celdasPermitidas = [
-    2, 
+    2,
     18, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31,
     34, 35, 36, 40, 44, 47,
     50, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
@@ -111,7 +124,7 @@ function crearLaberinto2() {
     178, 179, 180, 182, 184, 186, 188, 190,
     194, 198, 202, 203, 204, 206,
     210, 212, 213, 214, 216, 217, 218, 220, 222, 239,
-    226, 227, 228, 232, 236, 238, 
+    226, 227, 228, 232, 236, 238,
     255,
   ];
 
@@ -124,9 +137,17 @@ function crearLaberinto2() {
     }
   }
   jugador = "celda2";
-  document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+  document.getElementById(jugador).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
   asesino = "celda153";
   powerup = "celda232";
+
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+    do { 
+      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127)+ 1)*2);
+    } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
+    fantasmas[`fantasma${i}`] =  posibleCasilladeFantasma;
+  }
+  
 }
 
 
@@ -139,29 +160,65 @@ function actualizarPeligro() {//zona de peligro
   });
   //aqui lo hago para que solo aparezca cuando este dentro del radio de vision del personaje
   let celdasAdyacentes = [];
+
   if (conexiones[asesino].arriba == conexiones[jugador].abajo ||
     conexiones[asesino].arriba == conexiones[jugador].derecha ||
     conexiones[asesino].arriba == conexiones[jugador].izquierda
   ) celdasAdyacentes.push(conexiones[asesino].arriba);
+
   if (conexiones[asesino].abajo == conexiones[jugador].arriba ||
     conexiones[asesino].abajo == conexiones[jugador].derecha ||
     conexiones[asesino].abajo == conexiones[jugador].izquierda
   ) celdasAdyacentes.push(conexiones[asesino].abajo);
+
   if (conexiones[asesino].izquierda == conexiones[jugador].derecha ||
     conexiones[asesino].izquierda == conexiones[jugador].arriba ||
     conexiones[asesino].izquierda == conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].izquierda);
+
   if (conexiones[asesino].derecha == conexiones[jugador].izquierda ||
     conexiones[asesino].derecha == conexiones[jugador].arriba ||
     conexiones[asesino].derecha == conexiones[jugador].abajo
   ) celdasAdyacentes.push(conexiones[asesino].derecha);
 
-  if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2"))
-    document.getElementById(asesino).classList.add("peligro");
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+    if (conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].abajo ||
+      conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].derecha ||
+      conexiones[fantasmas[`fantasma${i}`]].arriba == conexiones[jugador].izquierda
+    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].arriba);
+  
+    if (conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].arriba ||
+      conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].derecha ||
+      conexiones[fantasmas[`fantasma${i}`]].abajo == conexiones[jugador].izquierda
+    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].abajo);
+  
+    if (conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].derecha ||
+      conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].arriba ||
+      conexiones[fantasmas[`fantasma${i}`]].izquierda == conexiones[jugador].abajo
+    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].izquierda);
+  
+    if (conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].izquierda ||
+      conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].arriba ||
+      conexiones[fantasmas[`fantasma${i}`]].derecha == conexiones[jugador].abajo
+    ) celdasAdyacentes.push(conexiones[fantasmas[`fantasma${i}`]].derecha);
+  }
 
+  if (document.getElementById(asesino).classList.contains("vision") || document.getElementById(asesino).classList.contains("vision2")){
+    document.getElementById(asesino).classList.add("peligro");
   celdasAdyacentes.forEach(idCelda => {
     document.getElementById(idCelda).classList.add("peligro");
   });
+}
+
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+  if (document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision") || document.getElementById(fantasmas[`fantasma${i}`]).classList.contains("vision2")){
+    document.getElementById(fantasmas[`fantasma${i}`]).classList.add("peligro");
+  celdasAdyacentes.forEach(idCelda => {
+    document.getElementById(idCelda).classList.add("peligro");
+  });}
+  }
+
+
 }
 
 
@@ -238,6 +295,55 @@ function vision() {
 
 
 
+// Movimiento del asesino
+function moverFantasma() {
+  for (let i = 1; i <= cantidaddeFantasmas; i++) {
+
+    let posiblesDirecciones = [];//ponemos cuales son las casillas contiguas al asesino
+    if (conexiones[fantasmas[`fantasma${i}`]].arriba) posiblesDirecciones.push("arriba");
+    if (conexiones[fantasmas[`fantasma${i}`]].abajo) posiblesDirecciones.push("abajo");
+    if (conexiones[fantasmas[`fantasma${i}`]].izquierda) posiblesDirecciones.push("izquierda");
+    if (conexiones[fantasmas[`fantasma${i}`]].derecha) posiblesDirecciones.push("derecha");
+
+    if (posiblesDirecciones.length === 0) return;
+
+    let direccionAleatoria = posiblesDirecciones[Math.floor(Math.random() * posiblesDirecciones.length)];//establecemos la direccion, una de las 4 de arriba
+    let fantasmaPosicionFutura = conexiones[fantasmas[`fantasma${i}`]][direccionAleatoria];//posible posicion futura
+    let celdaDestinoFantasma = document.getElementById(fantasmaPosicionFutura);//la celda del asesino
+    do {
+      // Tenemos que verificar que la casilla no sea un muro, si lo es hacemos q se repita el proceso hasta que sea una celda
+      if (!celdaDestinoFantasma.classList.contains("celda")) {
+        direccionAleatoria = posiblesDirecciones[Math.floor(Math.random() * posiblesDirecciones.length)];
+        fantasmaPosicionFutura = conexiones[fantasmas[`fantasma${i}`]][direccionAleatoria];
+        celdaDestinoFantasma = document.getElementById(fantasmaPosicionFutura);
+      }
+    }
+    while (!celdaDestinoFantasma.classList.contains("celda"))
+    document.getElementById(fantasmas[`fantasma${i}`]).textContent = ""; // Borra imagen anterior
+    fantasmas[`fantasma${i}`] = fantasmaPosicionFutura;
+
+    // Solo mostrar al asesino si está en el campo de visión
+    if (celdaDestinoFantasma.classList.contains("vision") || celdaDestinoFantasma.classList.contains("vision2")) {
+      const imgFantasma = document.createElement("img");
+      imgFantasma.src = "./personajes/chemari.jpeg"; // ← cambia esto por la ruta correcta
+      imgFantasma.alt = "fantasma";
+      imgFantasma.classList.add("asesino");
+      document.getElementById(fantasmas[`fantasma${i}`]).appendChild(imgFantasma);
+    }
+
+    if (fantasmas[`fantasma${i}`] === jugador && !invulnerabilidad) {
+      gameOver = true;
+      document.getElementById('avisoCookies').style.display = 'flex';
+      contenedorPasos.innerHTML = `${pasos}`;
+      contenedorLaberintosPuntuacion.innerHTML = `${laberintos - 1}`;
+      if (laberintos != 1) contenedorPuntuacion.innerHTML = `${pasos * (laberintos - 1)}`;
+      else contenedorPuntuacion.innerHTML = `${pasos * laberintos / 2}`;
+    }
+  }
+}
+
+
+
 
 // Movimiento del asesino
 function moverAsesino() {
@@ -273,13 +379,13 @@ function moverAsesino() {
     document.getElementById(asesino).appendChild(imgAsesino);
   }
 
-  if (asesino === jugador && !invulnerabilidad ) {
+  if (asesino === jugador && !invulnerabilidad) {
     gameOver = true;
     document.getElementById('avisoCookies').style.display = 'flex';
     contenedorPasos.innerHTML = `${pasos}`;
-    contenedorLaberintosPuntuacion.innerHTML = `${laberintos-1}`;
-    if(laberintos!=1)contenedorPuntuacion.innerHTML = `${pasos*(laberintos-1)}`;
-    else contenedorPuntuacion.innerHTML = `${pasos*laberintos/2}`;
+    contenedorLaberintosPuntuacion.innerHTML = `${laberintos - 1}`;
+    if (laberintos != 1) contenedorPuntuacion.innerHTML = `${pasos * (laberintos - 1)}`;
+    else contenedorPuntuacion.innerHTML = `${pasos * laberintos / 2}`;
   }
 }
 
@@ -316,30 +422,32 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
 
     document.getElementById(jugador).textContent = "";
     jugador = nuevaCeldaID;
-    document.getElementById(jugador).innerHTML =  '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
+    document.getElementById(jugador).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
     pasos = pasos + 1;
     vision();
     moverAsesino();
+    moverFantasma();
     actualizarPeligro();
-    if (invulnerabilidad){
-      tiempodeInvulnerabilidad = tiempodeInvulnerabilidad -1;
-      if (tiempodeInvulnerabilidad==0) invulnerabilidad = false;
+    if (invulnerabilidad) {
+      tiempodeInvulnerabilidad = tiempodeInvulnerabilidad - 1;
+      if (tiempodeInvulnerabilidad == 0) invulnerabilidad = false;
     }
-    if((jugador == powerup) && !recogidoPowerup){
+    if ((jugador == powerup) && !recogidoPowerup) {
       document.getElementById(powerup).innerHTML = '<img src="./personajes/eustaquio.jpeg" alt="jugador" class="asesino">';
       tiempodeInvulnerabilidad = 10;
       document.querySelectorAll(".powerup").forEach(powerup => {
         powerup.classList.add("vision");
         powerup.classList.remove("powerup");
       });
-      recogidoPowerup= true;
+      recogidoPowerup = true;
       invulnerabilidad = true;
     }
 
     if (jugador == "celda255") {
+      cantidaddeFantasmas = laberintos;
       alert(`laberinto ${laberintos} completo`);
 
-      laberintos = laberintos +1;
+      laberintos = laberintos + 1;
 
       const resultado = Math.floor(Math.random() * 2) + 1;
 
@@ -352,7 +460,7 @@ document.addEventListener("keydown", function (event) {//direccion asignada via 
       } else {
         console.log("Error al elegir que laberinto crear");
       }
-      recogidoPowerup= false;
+      recogidoPowerup = false;
       invulnerabilidad = false;
       vision();
       actualizarPeligro();
