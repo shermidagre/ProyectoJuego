@@ -20,7 +20,26 @@ const contenedorPuntuacion = document.getElementById("Puntuacion");
 const contenedorLaberintosPuntuacion = document.getElementById("LaberintosPuntuacion");
 
 
+const secuencia = []; //estas van a ser las casillas donde se coloquen los fantasmas, para que queden siempre a 1 casilla de distrancia del jugador
+    let num = 2; 
+    let cuenta = 0;
+    let cuenta2 = 0;
 
+    while (num <= 256) {
+      if (num>64)secuencia.push(num);  //esto es para que te spawnee un poco alejado
+    
+        if (cuenta < 7) {
+            num += 2;
+            cuenta++;
+            cuenta2++;
+        } else if (cuenta === 7) {
+            num += 1;
+            cuenta = 0; 
+        } else if (cuenta2 === 14) {
+          num += 1;
+          cuenta2 = 0; 
+        }
+    }
 
 
 // Función para generar las conexiones del laberinto
@@ -91,7 +110,7 @@ function crearLaberinto1() {
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
     do {
-      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127) + 1) * 2);
+      posibleCasilladeFantasma = 'celda' + Math.floor(Math.random() * secuencia.length);
     } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
     fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
   }
@@ -144,7 +163,7 @@ function crearLaberinto2() {
 
   for (let i = 1; i <= cantidaddeFantasmas; i++) {
     do {
-      posibleCasilladeFantasma = 'celda' + (Math.floor((Math.random() * 127) + 1) * 2);
+      posibleCasilladeFantasma = 'celda' + Math.floor(Math.random() * secuencia.length);
     } while (!document.getElementById(posibleCasilladeFantasma).classList.contains('celda'));
     fantasmas[`fantasma${i}`] = posibleCasilladeFantasma;
   }
@@ -551,7 +570,7 @@ function mostrarMejorJugador() {
 
   // Ordenar por pasos y obtener al mejor
   const mejor = historial.reduce((prev, current) =>
-    (current.puntuacion > prev.pasos) ? current : prev
+    (current.puntuacion > prev.puntuacion) ? current : prev
   );
 
   // Mostrar en pantalla
